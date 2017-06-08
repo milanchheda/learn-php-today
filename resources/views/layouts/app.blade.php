@@ -134,6 +134,9 @@
                             <div class="form-group" id="login-errors">
                                 <span class="help-block"><strong id="form-login-errors"></strong></span>
                             </div>
+                            <div class="form-group">
+                                <div class="g-recaptcha" data-sitekey="6Lf7qCQUAAAAAHup0RNAyFHXOGzJcI5DXXkK8j-J"></div>
+                            </div>
                             <div>
                                 <button class="btn btn-login btn-primary right">Register</button>
                                 <a href="#" class="linkLookLikeButton" id="existingUserLogin">Existing User? Log in</a>
@@ -184,6 +187,7 @@
         </div>
     </div>
     <script src="{{ asset('js/nprogress.min.js') }}"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="/js/main.js"></script>
 </body>
