@@ -50,23 +50,31 @@ function populateNumbers() {
 }
 
 $(document.body).on('click', '.upvote, .recommend', function(){
+    var fieldToUpdate = $(this).find('span');
+    var currentCount = parseInt(fieldToUpdate.text());
+    var increDecre = '';
     if(!$(this).find('i').hasClass('active')) {
         $(this).find('i').addClass('active');
-        var fieldToUpdate = $(this).find('span');
-        var currentCount = parseInt(fieldToUpdate.text());
-        axios.post('/numbers/update', {
-            action: $(this).attr('class'),
-            link_id: $(this).parents(".linksContainer:first").attr('link-id')
-        })
-        .then(function (response) {
-            fieldToUpdate.text(currentCount+1);
-            NProgress.set(100);
-        })
-        .catch(function (error) {
-            console.log(error);
-            $("#loginNavigation").trigger('click');
-        });
+        increDecre = 1;
+        currentCount++;
+    } else {
+        $(this).find('i').removeClass('active');
+        increDecre = 0;
+        currentCount--;
     }
+    axios.post('/numbers/update', {
+        action: $(this).attr('class'),
+        link_id: $(this).parents(".linksContainer:first").attr('link-id'),
+        increDecre: increDecre
+    })
+    .then(function (response) {
+        fieldToUpdate.text(currentCount);
+        NProgress.set(100);
+    })
+    .catch(function (error) {
+        console.log(error);
+        $("#loginNavigation").trigger('click');
+    });
     return false;
 });
 

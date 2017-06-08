@@ -57,8 +57,8 @@ h4.link-title a {
 	color: #f30202 !important;
 }
 div.pagination {
-	float: left;
-	clear: both;
+	display: table !important;
+	margin: 0 auto;
 }
 .linkLookLikeButton {
 	border: none;

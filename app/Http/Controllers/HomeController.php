@@ -30,7 +30,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $allLinks = Link::orderBy('published_on', 'desc')->paginate(12);
+        $allLinks = Link::orderBy('published_on', 'desc')->simplePaginate(12);
         if (Request::ajax()) {
             return Response::json(View::make('viewlinks', compact('allLinks'))->render());
         }
@@ -97,10 +97,18 @@ class HomeController extends Controller
         
         switch ($params['action']) {
             case 'upvote':
-                DB::table('link_views')->where('link_id', '=', $params['link_id'])->increment('upvote_count');
+                if($params['increDecre'] == 1) {
+                    DB::table('link_views')->where('link_id', '=', $params['link_id'])->increment('upvote_count');
+                } else {
+                    DB::table('link_views')->where('link_id', '=', $params['link_id'])->decrement('upvote_count');
+                }
                 break;
             case 'recommend':
-                DB::table('link_views')->where('link_id', '=', $params['link_id'])->increment('recommend_count');
+                if($params['increDecre'] == 1) {
+                    DB::table('link_views')->where('link_id', '=', $params['link_id'])->increment('recommend_count');
+                } else {
+                    DB::table('link_views')->where('link_id', '=', $params['link_id'])->decrement('recommend_count');
+                }
                 break;
             default:
                 # code...
@@ -131,41 +139,54 @@ class HomeController extends Controller
             }
         } else {
             $linkIdArray = [];
-            $existingUpvotes = '';
+            $existingUpvotes = $existingRecommends = $fieldName = '';
             switch ($params['action']) {
                 case 'upvote':
                     if($getExisting[0]->upvotes) {
                         $existingUpvotes = $getExisting[0]->upvotes;
                     }
 
-                    $finalVotes = $params['link_id'];
-                    if($existingUpvotes != '') {
-                        $finalVotes = $existingUpvotes . ',' . $params['link_id'];
+                    if($params['increDecre'] == 1) {
+                        $finalVotes = $params['link_id'];
+                        if($existingUpvotes != '') {
+                            $finalVotes = $existingUpvotes . ',' . $params['link_id'];
+                        }
+                    } else {
+                        $existingUpvotesArray = explode(',', $existingUpvotes);
+                        $existingUpvotesArray = array_flip($existingUpvotesArray);
+                        unset($existingUpvotesArray[$params['link_id']]);
+                        $existingUpvotesArray = array_flip($existingUpvotesArray);
+                        $finalVotes = implode(',', $existingUpvotesArray);
                     }
-                    // array_push($linkIdArray, $params['link_id']);
-                    $user = UserActivites::where("user_id",Auth::id())
-                                    ->update( 
-                                           array( 
-                                                 'upvotes' => $finalVotes,
-                                                )
-                                            );
+                    $fieldName = 'upvotes';
                     break;
                 case 'recommend':
                     if($getExisting[0]->recommends) {
-                        $existingUpvotes = $getExisting[0]->recommends;
-                        // $linkIdArray[] = $existingUpvotes;
+                        $existingRecommends = $getExisting[0]->recommends;
                     }
-                    
-
-                    // array_push($linkIdArray, $params['link_id']);
-
-                    $user = UserActivites::where("user_id",Auth::id())
-                                    ->update( 
-                                           array( 
-                                                 'recommends' => $existingUpvotes . ',' . $params['link_id'],
-                                                )
-                                            );
+                    if($params['increDecre'] == 1) {
+                        $finalVotes = $params['link_id'];
+                        if($existingRecommends != '') {
+                            $finalVotes = $existingRecommends . ',' . $params['link_id'];
+                        }
+                    } else {
+                        $existingRecommendsArray = explode(',', $existingRecommends);
+                        $existingRecommendsArray = array_flip($existingRecommendsArray);
+                        unset($existingRecommendsArray[$params['link_id']]);
+                        $existingRecommendsArray = array_flip($existingRecommendsArray);
+                        $finalVotes = implode(',', $existingRecommendsArray);   
+                    }
+                    $fieldName = 'recommends';
                     break;
+            }
+
+            if($fieldName != '') {
+                $user = UserActivites::where("user_id",Auth::id())
+                                ->update( 
+                                       array( 
+                                                $fieldName => $finalVotes,
+                                            )
+                                        );
             }
         }
     }

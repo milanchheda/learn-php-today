@@ -8,20 +8,13 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Learn PHP Today</title>
 
-    <!-- Bootstrap core CSS -->
-    <!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"> -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"> -->
     <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
-    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet" /> -->
     <link href="{{ asset('css/nprogress.min.css') }}" rel="stylesheet">
-    <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
-
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -190,15 +183,8 @@
             </div>
         </div>
     </div>
-
-    <!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script> -->
     <script src="{{ asset('js/nprogress.min.js') }}"></script>
-    <script src="{{ asset('js/axios.min.js') }}"></script>
-    <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
-    <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
-    <!-- <script src="{{ asset('js/main.js') }}"></script> -->
     <script src="/js/main.js"></script>
 </body>
 </html>
