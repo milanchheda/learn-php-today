@@ -55,6 +55,12 @@ a {
 }
 h4.link-title a {
 	color: #f30202 !important;
+	font-weight: bold;
+}
+h4.link-title a small {
+	font-size: 0.8em;
+	margin-left: 1px;
+	font-weight: bold;
 }
 div.pagination {
 	display: table !important;

@@ -5,7 +5,7 @@ function getPosts(page) {
     }).done(function (data) {
     	NProgress.set(100);
         $('#links-container').html(data);
-        // activateToolTip();
+        activateToolTip();
         populateNumbers();
         // assignVoting();
         location.hash = page;
@@ -13,6 +13,10 @@ function getPosts(page) {
     }).fail(function () {
         // alert('Posts could not be loaded.');
     });
+}
+
+function activateToolTip() {
+    $('[data-toggle="tooltip"]').tooltip();
 }
 
 function populateNumbers() {
@@ -100,6 +104,7 @@ $(".recommendHeart").on('animationend', function(){
 
 $(document).ready(function(){
     populateNumbers();
+    activateToolTip();
     $(document).on('click', '.pagination a', function (e) {
         NProgress.start();
         getPosts($(this).attr('href').split('page=')[1]);
