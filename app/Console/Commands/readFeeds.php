@@ -41,7 +41,7 @@ class readFeeds extends Command
      */
     public function handle()
     {
-        $allSources = DB::table('sources')->get()->pluck('xml_url')->toArray();
+        $allSources = DB::table('sources')->where('status', '=', 1)->get()->pluck('xml_url')->toArray();
         $linksArray = [];
         $feed = Feeds::make($allSources, 10);
         $data = array(
@@ -57,21 +57,26 @@ class readFeeds extends Command
                 $checkIfExist = DB::table('links')->where('slug', '=', $slug)->get()->pluck('id')->toArray();
                 if(empty($checkIfExist)) {
                     $postDate = date('Y-m-d H:i:s', strtotime(str_replace(' | ', '', $item->get_date('j F Y | g:i a'))));
-                    $newLink = new Link();
-                    $newLink->title = $item->get_title();
-                    $newLink->published_on = $postDate;
-                    $newLink->link = $item->get_permalink();
-                    $newLink->slug = $slug;
-                    $newLink->content = $item->get_description();
-                    $newLink->save();
+                    // DB::beginTransaction();
+                    try {
+                        $newLink = new Link();
+                        $newLink->title = $item->get_title();
+                        $newLink->published_on = $postDate;
+                        $newLink->link = $item->get_permalink();
+                        $newLink->slug = $slug;
+                        $newLink->content = $item->get_description();
+                        $newLink->save();
 
-                    if($newLink->id) {
-                        $newLinkView = new LinkView();
-                        $newLinkView->link_id = $newLink->id;
-                        $newLinkView->view_count = 0;
-                        $newLinkView->upvote_count = 0;
-                        $newLinkView->recommend_count = 0;
-                        $newLinkView->save();
+                        if($newLink->id) {
+                            $newLinkView = new LinkView();
+                            $newLinkView->link_id = $newLink->id;
+                            $newLinkView->view_count = 0;
+                            $newLinkView->upvote_count = 0;
+                            $newLinkView->recommend_count = 0;
+                            $newLinkView->save();
+                        }
+                    } catch (\Exception $e) {
+                        // DB::rollback();
                     }
                 }
             }
