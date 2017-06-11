@@ -10,11 +10,9 @@
 
     <title>Learn PHP Today</title>
 
-    <!-- <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet"> -->
-    <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/nprogress.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    
+    <link href="{{ mix('css/custom.min.css') }}" rel="stylesheet">
+    
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -186,9 +184,8 @@
             </div>
         </div>
     </div>
-    <script src="{{ asset('js/nprogress.min.js') }}"></script>
+    
     <script src='https://www.google.com/recaptcha/api.js'></script>
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script src="/js/main.js"></script>
+    <script src="{{ mix('js/custom.min.js') }}"></script>
 </body>
 </html>
