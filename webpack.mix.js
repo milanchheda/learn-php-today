@@ -11,6 +11,8 @@ const { mix } = require('laravel-mix');
  |
  */
 
+mix.js('resources/assets/js/app.js', 'public/js')
+.extract(['vue', 'jquery']);
 mix.sass('resources/assets/sass/app.scss', 'public/css');
 
 mix.combine([
@@ -19,12 +21,14 @@ mix.combine([
     'resources/assets/css/style.css'
 ], 'public/css/custom.css')
     .minify('public/css/custom.css');
-    // .version('public/css/custom.css');
+    .version();
 
 mix.combine([
+	'public/js/manifest.js',
+	'public/js/vendor.js',
     'resources/assets/js/nprogress.min.js',
     'public/js/app.js',
     'resources/assets/js/main.js',
 ], 'public/js/custom.js')
     .minify('public/js/custom.js');
-    // .version('public/js/custom.js');
+    .version();
