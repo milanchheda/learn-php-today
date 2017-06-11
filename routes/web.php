@@ -27,4 +27,5 @@ Route::get('/recommends', ['middleware' => 'auth', 'uses' => 'HomeController@myR
 
 Route::group(['prefix' => config('backpack.base.route_prefix', 'admin'), 'middleware' => ['web', 'auth']], function () {
     CRUD::resource('source', 'Admin\SourceCrudController');
+    CRUD::resource('links', 'Admin\LinksCrudController');
 });
