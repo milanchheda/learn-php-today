@@ -21,7 +21,6 @@ mix.combine([
     'resources/assets/css/style.css'
 ], 'public/css/custom.css')
     .minify('public/css/custom.css');
-    .version();
 
 mix.combine([
 	'public/js/manifest.js',
@@ -31,4 +30,3 @@ mix.combine([
     'resources/assets/js/main.js',
 ], 'public/js/custom.js')
     .minify('public/js/custom.js');
-    .version();
