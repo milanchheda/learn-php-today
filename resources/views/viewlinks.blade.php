@@ -13,7 +13,7 @@
                     </a>
                 </h4>
                 <div class="description">{{ str_limit(strip_tags($user->content), 250) }}</div>
-                <div class="pull-left leftBottom">{{ $user->published_on->diffForHumans() }}</div>
+                <div class="pull-left leftBottom">{{ Carbon\Carbon::parse($user->published_on)->diffForHumans() }}</div>
                 <div class="pull-right actionItems">
                     <a href="#" class="view">
                         <i class="fa fa-eye fa-2" aria-hidden="true" style="vertical-align: middle;font-size:16px;"></i>

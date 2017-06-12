@@ -115,13 +115,13 @@ $(document).ready(function(){
     loginForm.submit(function(e){
         e.preventDefault();
         var formData = loginForm.serialize();
-        $( '#login-errors-name' ).html( "" );
-        $( '#login-errors-email' ).html( "" );
-        $( '#login-errors-password' ).html( "" );
+        $('#login-errors-name').html("");
+        $('#login-errors-email').html("");
+        $('#login-errors-password').html("");
         $("#login-name").removeClass("has-error");
         $("#login-email").removeClass("has-error");
         $("#login-password").removeClass("has-error");
-
+        $("#loginToSystem").html('<i class="fa fa-spinner fa-spin"></i> Logging...');
         $.ajax({
             url:'/login',
             type:'POST',
@@ -155,7 +155,7 @@ $(document).ready(function(){
         $("#register-name").removeClass("has-error");
         $("#register-email").removeClass("has-error");
         $("#register-password").removeClass("has-error");
-
+        $("#registerToSystem").html('<i class="fa fa-spinner fa-spin"></i> Registering...');
         $.ajax({
             url:'/register',
             type:'POST',

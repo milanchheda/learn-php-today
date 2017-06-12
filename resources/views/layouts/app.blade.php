@@ -64,6 +64,7 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
+                        <li {{{ (Request::is('top-views') ? 'class=active' : '') }}}><a href="{{ url('top-views') }}">Top Views</a></li>
                     @if (!Auth::guest())
                         <li><a href="{{ url('upvotes') }}">My Upvotes</a></li>
                         <li><a href="{{ url('recommends') }}">Recommends by me</a></li>
@@ -151,8 +152,8 @@
                                 <div class="g-recaptcha" data-sitekey="6Lf7qCQUAAAAAHup0RNAyFHXOGzJcI5DXXkK8j-J"></div>
                             </div>
                             <div>
-                                <button class="btn btn-login btn-primary right">Register</button>
-                                <a href="#" class="linkLookLikeButton" id="existingUserLogin">Existing User? Log in</a>
+                                <button id="registerToSystem" class="btn btn-login btn-primary right">Register</button>
+                                <a href="#" class="linkLookLikeButton" id="existingUserLogin">Existing User? Login</a>
                             </div>
                         </form>
                     </div>
@@ -170,7 +171,7 @@
                       aria-label="Close">
                       <span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" 
-                    id="favoritesModalLabel">Sign In</h4>
+                    id="favoritesModalLabel">Log In</h4>
                 </div>
 
                 <div class="panel panel-filled">
@@ -190,8 +191,8 @@
                             </div>
                             
                             <div>
-                                <button class="btn btn-login btn-primary right">Login</button>
-                                <a href="#" class="linkLookLikeButton" id="newUserLogin">New to LearnPHPtoday? Register</a>
+                                <button id="loginToSystem" class="btn btn-login btn-primary right">Login</button>
+                                <a href="#" class="linkLookLikeButton" id="newUserLogin">Register</a>
                             </div>
                         </form>
                     </div>

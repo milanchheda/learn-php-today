@@ -190,4 +190,12 @@ class HomeController extends Controller
             }
         }
     }
+
+    public function topViews() {
+        $allLinks = DB::table('links')->join('link_views', 'links.id', 'link_views.link_id')->where('link_views.view_count', '>' , 0)->orderBy('link_views.view_count', 'desc')->simplePaginate(12);
+        if (Request::ajax()) {
+            return Response::json(View::make('viewlinks', compact('allLinks'))->render());
+        }
+        return View::make('home', compact('allLinks'));     
+    }
 }

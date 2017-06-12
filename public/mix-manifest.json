@@ -5,5 +5,7 @@
   "/css/custom.min.css": "/css/custom.min.css",
   "/js/custom.js": "/js/custom.js",
   "/js/custom.min.js": "/js/custom.min.js",
-  "/mix.js": "/mix.js"
+  "/mix.js": "/mix.js",
+  "/js/vendor.js": "/js/vendor.js",
+  "/js/manifest.js": "/js/manifest.js"
 }
