@@ -65,10 +65,6 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         <li {{{ (Request::is('top-views') ? 'class=active' : '') }}}><a href="{{ url('top-views') }}">Top Views</a></li>
-                    @if (!Auth::guest())
-                        <li><a href="{{ url('upvotes') }}">My Upvotes</a></li>
-                        <li><a href="{{ url('recommends') }}">Recommends by me</a></li>
-                    @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -87,6 +83,10 @@
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
+                                    @if (!Auth::guest())
+                                        <li><a href="{{ url('upvotes') }}">My Upvotes</a></li>
+                                        <li><a href="{{ url('recommends') }}">Recommends by me</a></li>
+                                    @endif
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
