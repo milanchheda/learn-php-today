@@ -33,12 +33,15 @@ class HomeController extends Controller
     public function index()
     {
         // Redis::set('name', 'Taylor');
-        $allLinks = Cache::remember('homepage', 10, function () {
-            return Link::orderBy('published_on', 'desc')->simplePaginate(12);
-        });
-        // $allLinks = Link::orderBy('published_on', 'desc')->simplePaginate(12);
+        
+        
         if (Request::ajax()) {
+            $allLinks = Link::orderBy('published_on', 'desc')->simplePaginate(12);
             return Response::json(View::make('viewlinks', compact('allLinks'))->render());
+        } else {
+            $allLinks = Cache::remember('homepage', 10, function () {
+                return Link::orderBy('published_on', 'desc')->simplePaginate(12);
+            });
         }
         return View::make('home', compact('allLinks'));
         // return view('home');
