@@ -65,6 +65,8 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         <li {{{ (Request::is('top-views') ? 'class=active' : '') }}}><a href="{{ url('top-views') }}">Top Views</a></li>
+                        <li {{{ (Request::is('top-upvotes') ? 'class=active' : '') }}}><a href="{{ url('top-upvotes') }}">Top Upvotes</a></li>
+                        <li {{{ (Request::is('top-recommends') ? 'class=active' : '') }}}><a href="{{ url('top-recommends') }}">Top Recommends</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -73,6 +75,9 @@
                         @if (Auth::guest())
                             <!-- <li><a href="{{ route('login') }}">Login</a></li> -->
                             <!-- <li><a href="{{ route('register') }}">Register</a></li> -->
+                            <li>
+                                <a href="#" id="Search">Search</a>
+                            </li>
                             <li><a href="#" data-toggle="modal" data-target="#loginModal" id="loginNavigation">Login</a></li>
                             <li><a href="#" data-toggle="modal" data-target="#registerModal" id="registerNavigation">Register</a></li>
 
@@ -105,11 +110,8 @@
                 </div>
             </div>
         </nav>
-
         @yield('content')
     </div>
-
-
 
     <div class="modal fade" hidden="true" id="registerModal" role="dialog" tabindex="-1">
         <div class="modal-dialog">
@@ -200,7 +202,6 @@
             </div>
         </div>
     </div>
-    
     <script src='https://www.google.com/recaptcha/api.js'></script>
     <script src="{{ mix('js/custom.min.js') }}"></script>
 </body>

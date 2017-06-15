@@ -189,6 +189,7 @@ return [
         Backpack\PermissionManager\PermissionManagerServiceProvider::class,
 
         willvincent\Feeds\FeedsServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
 
     ],
 

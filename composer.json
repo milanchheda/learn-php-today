@@ -12,9 +12,11 @@
         "backpack/pagemanager": "^1.1",
         "backpack/permissionmanager": "^2.1",
         "backpack/settings": "^2.0",
+        "barryvdh/laravel-debugbar": "^2.4",
         "google/recaptcha": "^1.1",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
+        "predis/predis": "^1.1",
         "willvincent/feeds": "1.1.*"
     },
     "require-dev": {

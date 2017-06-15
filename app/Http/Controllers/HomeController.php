@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Redis;
 // use Illuminate\Http\Request;
 use App\Link;
 use View;
@@ -10,6 +11,7 @@ use Response;
 use DB;
 use Auth;
 use App\UserActivites;
+use Cache;
 
 class HomeController extends Controller
 {
@@ -30,7 +32,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $allLinks = Link::orderBy('published_on', 'desc')->simplePaginate(12);
+        // Redis::set('name', 'Taylor');
+        $allLinks = Cache::remember('homepage', 10, function () {
+            return Link::orderBy('published_on', 'desc')->simplePaginate(12);
+        });
+        // $allLinks = Link::orderBy('published_on', 'desc')->simplePaginate(12);
         if (Request::ajax()) {
             return Response::json(View::make('viewlinks', compact('allLinks'))->render());
         }
@@ -193,6 +199,22 @@ class HomeController extends Controller
 
     public function topViews() {
         $allLinks = DB::table('links')->join('link_views', 'links.id', 'link_views.link_id')->where('link_views.view_count', '>' , 0)->orderBy('link_views.view_count', 'desc')->simplePaginate(12);
+        if (Request::ajax()) {
+            return Response::json(View::make('viewlinks', compact('allLinks'))->render());
+        }
+        return View::make('home', compact('allLinks'));     
+    }
+
+    public function topUpvotes() {
+        $allLinks = DB::table('links')->join('link_views', 'links.id', 'link_views.link_id')->where('link_views.upvote_count', '>' , 0)->orderBy('link_views.upvote_count', 'desc')->simplePaginate(12);
+        if (Request::ajax()) {
+            return Response::json(View::make('viewlinks', compact('allLinks'))->render());
+        }
+        return View::make('home', compact('allLinks'));     
+    }
+
+    public function topRecommends() {
+        $allLinks = DB::table('links')->join('link_views', 'links.id', 'link_views.link_id')->where('link_views.recommend_count', '>' , 0)->orderBy('link_views.recommend_count', 'desc')->simplePaginate(12);
         if (Request::ajax()) {
             return Response::json(View::make('viewlinks', compact('allLinks'))->render());
         }

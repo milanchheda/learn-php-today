@@ -102,6 +102,16 @@ $(".recommendHeart").on('animationend', function(){
   $(this).toggleClass('is_animating');
 });
 
+$("#Search").on('click', function(){
+    $(".search-wrapper").show();
+    $(".js-menu-screen").addClass('is-visible');
+});
+
+$(".close-btn").on('click', function(){
+    $(".search-wrapper").hide();
+    $(".js-menu-screen").removeClass('is-visible');
+});
+
 $(document).ready(function(){
     populateNumbers();
     activateToolTip();

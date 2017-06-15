@@ -25,6 +25,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/upvotes', ['middleware' => 'auth', 'uses' => 'HomeController@myUpvotes']);
 Route::get('/recommends', ['middleware' => 'auth', 'uses' => 'HomeController@myRecommends']);
 Route::get('/top-views', 'HomeController@topViews');
+Route::get('/top-upvotes', 'HomeController@topUpvotes');
+Route::get('/top-recommends', 'HomeController@topRecommends');
+
+Route::get('search/autocomplete', ['as' => 'search-autocomplete', 'uses' => 'SearchController@autocomplete']);
+
 
 Route::group(['prefix' => config('backpack.base.route_prefix', 'admin'), 'middleware' => ['web', 'auth']], function () {
     CRUD::resource('source', 'Admin\SourceCrudController');
