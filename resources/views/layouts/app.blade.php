@@ -65,8 +65,8 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         <li {{{ (Request::is('top-views') ? 'class=active' : '') }}}><a href="{{ url('top-views') }}">Top Views</a></li>
-                        <li {{{ (Request::is('top-upvotes') ? 'class=active' : '') }}}><a href="{{ url('top-upvotes') }}">Top Upvotes</a></li>
-                        <li {{{ (Request::is('top-recommends') ? 'class=active' : '') }}}><a href="{{ url('top-recommends') }}">Top Recommends</a></li>
+                        <!-- <li {{{ (Request::is('top-upvotes') ? 'class=active' : '') }}}><a href="{{ url('top-upvotes') }}">Top Upvotes</a></li>
+                        <li {{{ (Request::is('top-recommends') ? 'class=active' : '') }}}><a href="{{ url('top-recommends') }}">Top Recommends</a></li> -->
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -75,9 +75,9 @@
                         @if (Auth::guest())
                             <!-- <li><a href="{{ route('login') }}">Login</a></li> -->
                             <!-- <li><a href="{{ route('register') }}">Register</a></li> -->
-                            <li>
+                            <!-- <li>
                                 <a href="#" id="Search">Search</a>
-                            </li>
+                            </li> -->
                             <li><a href="#" data-toggle="modal" data-target="#loginModal" id="loginNavigation">Login</a></li>
                             <li><a href="#" data-toggle="modal" data-target="#registerModal" id="registerNavigation">Register</a></li>
 

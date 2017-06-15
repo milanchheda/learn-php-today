@@ -8,6 +8,7 @@
                         <?php
                             $parse = parse_url($user->link);
                             echo "(" . str_replace('www.', '', $parse['host']) . ")";
+                            $shareURL = url('/') . '/post/' . $user->slug;
                         ?>
                         </small>
                     </a>
@@ -19,7 +20,7 @@
                         <i class="fa fa-eye fa-2" aria-hidden="true" style="vertical-align: middle;font-size:16px;"></i>
                         <span class="" id="view_{{ $user->id }}">0</span>
                     </a>
-                    <a href="http://twitter.com/share?text={{ $user->title }}&url={{ $user->link }}&via=learn_php_today" class="twitter-share-button" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;">
+                    <a href="http://twitter.com/share?text={{ $user->title }}&url={{ $shareURL }}&via=learn_php_today" class="twitter-share-button" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;">
                         <i class="fa fa-twitter" aria-hidden="true" style="vertical-align: middle;font-size:16px;" data-toggle="tooltip" data-placement="top" title="Click to share on Twitter."></i>
                     </a>
                     <a href="#" class="upvote" data-toggle="tooltip" data-placement="top" title="Click to Upvote.">
