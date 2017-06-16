@@ -190,6 +190,7 @@ return [
 
         willvincent\Feeds\FeedsServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
+        \Conner\Tagging\Providers\TaggingServiceProvider::class,
 
     ],
 

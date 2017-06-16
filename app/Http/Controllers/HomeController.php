@@ -33,14 +33,13 @@ class HomeController extends Controller
     public function index()
     {
         // Redis::set('name', 'Taylor');
-        
-        
         if (Request::ajax()) {
-            $allLinks = Link::orderBy('published_on', 'desc')->simplePaginate(12);
+            $allLinks = Link::with('tagged')->orderBy('published_on', 'desc')->simplePaginate(12);
             return Response::json(View::make('viewlinks', compact('allLinks'))->render());
         } else {
+            // $allLinks = Link::with('tagged')->orderBy('published_on', 'desc')->simplePaginate(12);
             $allLinks = Cache::remember('homepage', 10, function () {
-                return Link::orderBy('published_on', 'desc')->simplePaginate(12);
+                return Link::with('tagged')->orderBy('published_on', 'desc')->simplePaginate(12);
             });
         }
         return View::make('home', compact('allLinks'));
@@ -222,5 +221,19 @@ class HomeController extends Controller
             return Response::json(View::make('viewlinks', compact('allLinks'))->render());
         }
         return View::make('home', compact('allLinks'));     
+    }
+
+    public function showTaggedLinks($slug) {
+        if (Request::ajax()) {
+            $allLinks = Link::withAllTags([$slug])->orderBy('published_on', 'desc')->simplePaginate(12);
+            return Response::json(View::make('viewlinks', compact('allLinks'))->render());
+        } else {
+            $allLinks = Cache::remember("tag:". $slug, 60, function () use($slug) {
+                return Link::withAllTags([$slug])->orderBy('published_on', 'desc')->simplePaginate(12);
+            });
+            // $allLinks = Link::withAllTags([$slug])->orderBy('published_on', 'desc')->simplePaginate(12);    
+        }
+        
+        return View::make('home', compact('allLinks'));
     }
 }

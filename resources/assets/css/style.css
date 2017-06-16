@@ -1,6 +1,13 @@
-
 body {
 	background-color: #ebf3f9 !important;
+}
+.clearfix:before, .clearfix:after {
+    content: " ";
+    display: table
+}
+
+.clearfix:after {
+    clear: both
 }
 a {
 	color: #777 !important;
@@ -40,15 +47,19 @@ a {
 }
 .actionItems {
 	position: absolute;
-	bottom: 5px;
-	right: 25px;
-	font-size: 1.1em;
+	bottom: 6px;
+	left: 25px;
+	width: 100%;
+	font-size: 1.0em;
     font-weight: bold;
+    border-top: #eee 1px solid;
+    padding: 7px 10px 4px 0px;
 }
 .actionItems a {
 	/*border: 1px solid #DEDEDE;*/
     padding: 3px 6px;
     border-radius: 2px;
+    border: #EFEFEF 1px solid;
 }
 .actionItems a:hover {
 	background-color: #EEEEED;
@@ -84,6 +95,13 @@ div.pagination {
     border-radius: 2px;
     transition: box-shadow 0.2s ease;
 }
+.leftBottom50px {
+	position: absolute;
+	bottom: 45px;
+	left: 25px;
+	color: #ADADAD;
+	font-weight: bold;
+}
 .leftBottom {
 	position: absolute;
 	bottom: 5px;
@@ -100,4 +118,47 @@ div.pagination {
 }
 .view:hover .fa-eye, .view .active {
 	color: #4c87c1;
+}
+.linkedin:hover .fa-linkedin {
+	color: #0077B5;
+}
+.facebook:hover .fa-facebook {
+	color: #3b5998;
+}
+.twitter:hover .fa-twitter {
+	color: #0084b4;
+}
+.link-tags {
+	width: 100%;
+    border-top: #eee 1px solid;
+    padding: 7px 10px 0px 0px;
+    font-size: 0.7em;
+}
+.link-tags .tag {
+    float: left;
+    display: block;
+    border: #FB503B 1px solid;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    color: #FB503B !important;
+    font-weight: 700;
+    padding: 1px 5px;
+}
+.tag + .tag {
+    margin-left: 5px
+}
+
+.tag:hover {
+    text-decoration: none;
+    border-color: none;
+    color: #fff !important;
+    background-color: #FB503B
+}
+.tag {
+    -webkit-transition: color, border-color, background-color .2s ease-in-out;
+    -moz-transition: color, border-color, background-color .2s ease-in-out;
+    -ms-transition: color, border-color, background-color .2s ease-in-out;
+    -o-transition: color, border-color, background-color .2s ease-in-out;
+    transition: color, border-color, background-color .2s ease-in-out
 }

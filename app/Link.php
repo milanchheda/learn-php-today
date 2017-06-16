@@ -7,6 +7,8 @@ use DB;
 
 class Link extends Model
 {
+    use \Conner\Tagging\Taggable;
+
 	protected $table = 'links';
     /**
      * The attributes that are mass assignable.

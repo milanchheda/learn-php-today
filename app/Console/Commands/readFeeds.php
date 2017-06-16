@@ -43,7 +43,7 @@ class readFeeds extends Command
     {
         $allSources = DB::table('sources')->where('status', '=', 1)->get()->pluck('xml_url')->toArray();
         $linksArray = [];
-        $feed = Feeds::make($allSources, 10);
+        $feed = Feeds::make($allSources, 20);
         $data = array(
             'items'     => $feed->get_items()
         );
@@ -53,8 +53,11 @@ class readFeeds extends Command
             $linksArray['date'][] = date('Y-m-d H:i:s', strtotime(str_replace(' | ', '', $item->get_date('j F Y | g:i a'))));
 
             if($item->get_date('j F Y | g:i a') != '') {
+                $tagsArray = [];
                 $slug = str_slug($item->get_title(), '-');
+                $categories = $item->get_categories();
                 $checkIfExist = DB::table('links')->where('slug', '=', $slug)->get()->pluck('id')->toArray();
+
                 if(empty($checkIfExist)) {
                     $postDate = date('Y-m-d H:i:s', strtotime(str_replace(' | ', '', $item->get_date('j F Y | g:i a'))));
                     // DB::beginTransaction();
@@ -67,6 +70,20 @@ class readFeeds extends Command
                         $newLink->content = substr($item->get_description(), 0, 700);
                         $newLink->save();
 
+                        if(isset($categories)) {
+                            foreach ($categories as $key => $value) {
+                                if($value->term)
+                                    $tagsArray[] = strtoupper($value->term);
+                            }
+                            if(isset($tagsArray) && $tagsArray[0]) {
+                                $newLink->untag();
+                                $newLink->tag($tagsArray);    
+                            }
+                        } else {
+                            $newLink->untag();
+                            $newLink->tag('Uncategorized');
+                        }
+
                         if($newLink->id) {
                             $newLinkView = new LinkView();
                             $newLinkView->link_id = $newLink->id;
@@ -77,6 +94,26 @@ class readFeeds extends Command
                         }
                     } catch (\Exception $e) {
                         // DB::rollback();
+                    }
+                } else {
+                    try {
+                        $linkObj = Link::find($checkIfExist[0]);
+                        if(isset($categories)) {
+                            foreach ($categories as $key => $value) {
+                                if($value->term)
+                                    $tagsArray[] = strtoupper($value->term);
+                            }
+
+                            if(isset($tagsArray) && $tagsArray[0]) {
+                                $linkObj->untag();
+                                $linkObj->tag($tagsArray);    
+                            }
+                        } else {
+                            $linkObj->untag();
+                            $linkObj->tag('Uncategorized');
+                        }
+                    } catch(\Exception $e) {
+
                     }
                 }
             }
