@@ -28,7 +28,7 @@
                         </small>
                     </a>
                 </h4>
-                <div class="description">{{ str_limit(strip_tags($user->content), 250) }}</div>
+                <div class="description">{{ str_limit(strip_tags($user->content), 200) }}</div>
                 <!-- <div class="pull-left leftBottom">{{ Carbon\Carbon::parse($user->published_on)->diffForHumans() }}</div> -->
                 <?php
                     if($tagHtml != '') {
