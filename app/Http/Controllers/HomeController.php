@@ -200,7 +200,7 @@ class HomeController extends Controller
     }
 
     public function topViews() {
-        $allLinks = DB::table('links')->select(DB::raw('links.*'))->join('link_views', 'links.id', 'link_views.link_id')->where('link_views.view_count', '>' , 0)->orderBy('link_views.view_count', 'desc')->simplePaginate(12);
+        $allLinks = Link::with('tagged')->select(DB::raw('links.*'))->join('link_views', 'links.id', 'link_views.link_id')->where('link_views.view_count', '>' , 0)->orderBy('link_views.view_count', 'desc')->simplePaginate(12);
         if (Request::ajax()) {
             return Response::json(View::make('viewlinks', compact('allLinks'))->render());
         }
@@ -208,7 +208,7 @@ class HomeController extends Controller
     }
 
     public function topUpvotes() {
-        $allLinks = DB::table('links')->join('link_views', 'links.id', 'link_views.link_id')->where('link_views.upvote_count', '>' , 0)->orderBy('link_views.upvote_count', 'desc')->simplePaginate(12);
+        $allLinks = Link::with('tagged')->select(DB::raw('links.*'))->join('link_views', 'links.id', 'link_views.link_id')->where('link_views.upvote_count', '>' , 0)->orderBy('link_views.upvote_count', 'desc')->simplePaginate(12);
         if (Request::ajax()) {
             return Response::json(View::make('viewlinks', compact('allLinks'))->render());
         }
@@ -216,7 +216,7 @@ class HomeController extends Controller
     }
 
     public function topRecommends() {
-        $allLinks = DB::table('links')->join('link_views', 'links.id', 'link_views.link_id')->where('link_views.recommend_count', '>' , 0)->orderBy('link_views.recommend_count', 'desc')->simplePaginate(12);
+        $allLinks = Link::with('tagged')->select(DB::raw('links.*'))->join('link_views', 'links.id', 'link_views.link_id')->where('link_views.recommend_count', '>' , 0)->orderBy('link_views.recommend_count', 'desc')->simplePaginate(12);
         if (Request::ajax()) {
             return Response::json(View::make('viewlinks', compact('allLinks'))->render());
         }

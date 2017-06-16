@@ -129,7 +129,7 @@ div.pagination {
 	color: #0084b4;
 }
 .link-tags {
-	width: 100%;
+	width: 90%;
     border-top: #eee 1px solid;
     padding: 7px 10px 0px 0px;
     font-size: 0.7em;
@@ -144,10 +144,11 @@ div.pagination {
     color: #FB503B !important;
     font-weight: 700;
     padding: 1px 5px;
+    margin: 3px 2px;
 }
-.tag + .tag {
+/*.tag + .tag {
     margin-left: 5px
-}
+}*/
 
 .tag:hover {
     text-decoration: none;

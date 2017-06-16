@@ -1,14 +1,16 @@
 <div class="container-fluid container">
     @foreach($allLinks as $user)
     <?php
-        $tagHtml = '';
-        $count = 0;
-        foreach($user->tags as $tag) {
-            if($count == 5)
-                break;
-            $tagUrl = url('/') . '/tag/' . $tag->slug;
-            $tagHtml .= "<a href='" . $tagUrl . "' class='tag'>" . strtoupper($tag->name) . "</a>";
-            $count++;
+        if($user->tags) {
+            $tagHtml = '';
+            $count = 0;
+            foreach($user->tags as $tag) {
+                if($count == 5)
+                    break;
+                $tagUrl = url('/') . '/tag/' . $tag->slug;
+                $tagHtml .= "<a href='" . $tagUrl . "' class='tag'>" . strtoupper($tag->name) . "</a>";
+                $count++;
+            }
         }
     ?>
 
