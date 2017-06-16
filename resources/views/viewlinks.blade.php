@@ -17,7 +17,7 @@
         <div class="col-xs-12 col-md-4 col-lg-4 col-sm-6 linksContainer" data-toggle="tooltip" data-placement="top" style="height: 250px;" link-id={{ $user->id }}>
             <div class="well" style="height: 100%">
                 <h4 class="link-title">
-                    <a href="tag/{{ $user->slug }}">{{ $user->title }}
+                    <a href="/post/{{ $user->slug }}">{{ $user->title }}
                         <small>
                         <?php
                             $parse = parse_url($user->link);
