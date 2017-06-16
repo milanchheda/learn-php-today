@@ -43,7 +43,7 @@ class readFeeds extends Command
     {
         $allSources = DB::table('sources')->where('status', '=', 1)->get()->pluck('xml_url')->toArray();
         $linksArray = [];
-        $feed = Feeds::make($allSources, 20);
+        $feed = Feeds::make($allSources, 5);
         $data = array(
             'items'     => $feed->get_items()
         );
