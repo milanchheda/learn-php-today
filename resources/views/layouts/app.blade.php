@@ -79,7 +79,7 @@
                                 <a href="#" id="Search">Search</a>
                             </li> -->
                             <li><a href="#" data-toggle="modal" data-target="#loginModal" id="loginNavigation">Login</a></li>
-                            <li><a href="#" data-toggle="modal" data-target="#registerModal" id="registerNavigation">Register</a></li>
+                            <!-- <li><a href="#" data-toggle="modal" data-target="#registerModal" id="registerNavigation">Register</a></li> -->
 
                         @else
                             <li class="dropdown">

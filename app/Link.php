@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use DB;
+use Conner\Tagging\Model\Tag;
 
 class Link extends Model
 {
@@ -27,5 +28,11 @@ class Link extends Model
     		DB::table('link_views')->where('link_id', '=', $result[0]['id'])->increment('view_count');
     		return $result[0]['link'];
     	}
+    }
+
+    public function getAllTagsAndCounts()
+    {
+        $allTags = Tag::where('count', '>', 2)->orderBy('count', 'desc')->get();
+        return $allTags;
     }
 }

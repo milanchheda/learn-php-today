@@ -15,6 +15,7 @@ use Cache;
 
 class HomeController extends Controller
 {
+    
     /**
      * Create a new controller instance.
      *
@@ -38,7 +39,7 @@ class HomeController extends Controller
             return Response::json(View::make('viewlinks', compact('allLinks'))->render());
         } else {
             // $allLinks = Link::with('tagged')->orderBy('published_on', 'desc')->simplePaginate(12);
-            $allLinks = Cache::remember('homepage', 10, function () {
+            $allLinks = Cache::remember('homepage', 60, function () {
                 return Link::with('tagged')->orderBy('published_on', 'desc')->simplePaginate(12);
             });
         }
@@ -235,5 +236,11 @@ class HomeController extends Controller
         }
         
         return View::make('home', compact('allLinks'));
+    }
+
+    public function showAllTags() {
+        $model = new Link();
+        $allTags['allTags'] = $model->getAllTagsAndCounts();
+        return View::make('tags', $allTags);
     }
 }

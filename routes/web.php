@@ -28,6 +28,7 @@ Route::get('/top-views', 'HomeController@topViews');
 Route::get('/top-upvotes', 'HomeController@topUpvotes');
 Route::get('/top-recommends', 'HomeController@topRecommends');
 Route::get('/tag/{slug}', 'HomeController@showTaggedLinks');
+Route::get('/tags', 'HomeController@showAllTags');
 
 Route::get('search/autocomplete', ['as' => 'search-autocomplete', 'uses' => 'SearchController@autocomplete']);
 
