@@ -65,6 +65,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         <li {{{ (Request::is('top-views') ? 'class=active' : '') }}}><a href="{{ url('top-views') }}">Top Views</a></li>
+                        <li {{{ (Request::is('tags') ? 'class=active' : '') }}}><a href="{{ url('tags') }}">Categories</a></li>
                         <!-- <li {{{ (Request::is('top-upvotes') ? 'class=active' : '') }}}><a href="{{ url('top-upvotes') }}">Top Upvotes</a></li>
                         <li {{{ (Request::is('top-recommends') ? 'class=active' : '') }}}><a href="{{ url('top-recommends') }}">Top Recommends</a></li> -->
                     </ul>
@@ -110,6 +111,25 @@
                 </div>
             </div>
         </nav>
+        <div class="container container-fluid" id="breadCrumbContainer">
+            <ul class="page-breadcrumb navbar-nav">
+                <li>
+                    <i class="fa fa-home"></i>
+                        <a href="{{url('/')}}">Learn PHP Today</a>
+                        @if(count(Request::segments()) > 0)
+                            <i class="fa fa-angle-right"></i>
+                        @endif
+                </li>
+                @for($i = 0; $i <= count(Request::segments()); $i++)
+                <li>
+                    <a href="">{{ str_replace('-', ' ', ucfirst(Request::segment($i))) }}</a>
+                    @if($i < count(Request::segments()) & $i > 0)
+                        {!!'<i class="fa fa-angle-right"></i>'!!}
+                    @endif
+                </li>
+                @endfor
+            </ul>
+        </div>
         @yield('content')
     </div>
 

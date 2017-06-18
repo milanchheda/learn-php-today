@@ -19,38 +19,53 @@ function activateToolTip() {
     $('[data-toggle="tooltip"]').tooltip();
 }
 
+function attachSocialShareToEach() {
+    $(".linksContainer").each(function(){
+        var title = $(this).find('.link-title a').attr('title');
+        var shareUrl = $(this).find('.socialShare').data('share');
+        var options = {
+            twitter: {
+                text: title,
+                via: 'learn_php_today'
+            },
+            facebook : true,
+            googlePlus : true,
+            linkedin: true
+        };
+        $(this).find('.socialShare').shareButtons(shareUrl, options);
+    });
+}
+
 function populateNumbers() {
-    // if($(".votingClass").length) {
-        NProgress.start();
-        var postIds = '';
-        $(".linksContainer").each(function(){
-            postIds += $(this).attr('link-id') + ',';
-        });
-        axios.post('/numbers/fetch', {
-            postIds: postIds
-        })
-        .then(function (response) {
-            if(response.data) {
-                $.each(response.data.stats, function(k, v){
-                    $('#view_' + k).text(v.view_count);
-                    $('#upvote_' + k).text(v.upvote_count);
-                    $('#recommend_' + k).text(v.recommend_count);
-                });
+    NProgress.start();
+    var postIds = '';
+    $(".linksContainer").each(function(){
+        postIds += $(this).attr('link-id') + ',';
+    });
+    axios.post('/numbers/fetch', {
+        postIds: postIds
+    })
+    .then(function (response) {
+        if(response.data) {
+            $.each(response.data.stats, function(k, v){
+                $('#view_' + k).text(v.view_count);
+                $('#upvote_' + k).text(v.upvote_count);
+                $('#recommend_' + k).text(v.recommend_count);
+            });
 
-                $.each(response.data.upvotes, function(k, v){
-                    $('#upvote_' + v).prev().addClass('active');
-                });
+            $.each(response.data.upvotes, function(k, v){
+                $('#upvote_' + v).prev().addClass('active');
+            });
 
-                $.each(response.data.recommends, function(k, v){
-                    $('#recommend_' + v).prev().addClass('active');
-                });
-            }
-            NProgress.set(100);
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
-    // }
+            $.each(response.data.recommends, function(k, v){
+                $('#recommend_' + v).prev().addClass('active');
+            });
+        }
+        NProgress.set(100);
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
 }
 
 $(document.body).on('click', '.upvote, .recommend', function(){
@@ -80,6 +95,13 @@ $(document.body).on('click', '.upvote, .recommend', function(){
         $("#loginNavigation").trigger('click');
     });
     return false;
+});
+
+// Toggling the 'opened' css class will trigger the show/hide animation
+$(document.body).on('click', '.showSocialButtons', function(e){
+    $('.socialPlugin .socials').removeClass('opened');
+    e.preventDefault();
+    $(this).parent().find('.socials').toggleClass('opened');
 });
 
 $(document.body).on('click', '#existingUserLogin', function(){
@@ -112,14 +134,16 @@ $(".close-btn").on('click', function(){
     $(".js-menu-screen").removeClass('is-visible');
 });
 
+$(document).on('click', '.pagination a', function (e) {
+    NProgress.start();
+    getPosts($(this).attr('href').split('page=')[1]);
+    e.preventDefault();
+});
+
 $(document).ready(function(){
     populateNumbers();
     activateToolTip();
-    $(document).on('click', '.pagination a', function (e) {
-        NProgress.start();
-        getPosts($(this).attr('href').split('page=')[1]);
-        e.preventDefault();
-    });
+    attachSocialShareToEach();
 
     var loginForm = $("#loginForm");
     loginForm.submit(function(e){
