@@ -198,7 +198,7 @@
 
                 <div class="panel panel-filled">
                     <div class="panel-body">
-                        <form action="{{url('/login')}}" id="loginForm" method="post" name="registerForm">
+                        <form action="{{url('/login')}}" id="loginForm" method="post" name="loginForm">
                             {{ csrf_field() }}
                             <div class="form-group" id="login-email">
                                 <label class="control-label" for="name">E-Mail Address</label> <input class="form-control" id="email" name="email"
@@ -222,6 +222,60 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" hidden="true" id="feedbackModal" role="dialog" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" 
+                      data-dismiss="modal" 
+                      aria-label="Close">
+                      <span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" 
+                    id="favoritesModalLabel">Feedback</h4>
+                </div>
+                <div class="panel panel-filled">
+                    <div class="panel-body">
+                        <div class="feedbackContainer">
+                            <!-- <h1>Feedback Form</h1> -->
+
+                            
+                                <div class="alert alert-success hidden">
+                                </div>
+                            
+                            {!! Form::open(['route'=>'feedback.store', 'id' => 'feedbackForm', 'name' => 'feedbackForm']) !!}
+
+                                <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
+                                    {!! Form::label('Name:') !!}
+                                    {!! Form::text('name', old('name'), ['class'=>'form-control', 'placeholder'=>'Enter Name']) !!}
+                                    <span class="text-danger">{{ $errors->first('name') }}</span>
+                                </div>
+
+                                <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
+                                    {!! Form::label('Email:') !!}
+                                    {!! Form::text('email', old('email'), ['class'=>'form-control', 'placeholder'=>'Enter Email']) !!}
+                                    <span class="text-danger">{{ $errors->first('email') }}</span>
+                                </div>
+
+                                <div class="form-group {{ $errors->has('message') ? 'has-error' : '' }}">
+                                    {!! Form::label('Message:') !!}
+                                    {!! Form::textarea('message', old('message'), ['class'=>'form-control', 'placeholder'=>'Enter Message']) !!}
+                                    <span class="text-danger">{{ $errors->first('message') }}</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <button class="btn btn-success">Submit</button>
+                                </div>
+
+                            {!! Form::close() !!}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button id="feedback-button" data-toggle="modal" data-target="#feedbackModal" style="visibility: hidden;">Feedback</button>
     <script src='https://www.google.com/recaptcha/api.js'></script>
     <script src="{{ mix('js/custom.min.js') }}"></script>
 </body>

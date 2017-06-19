@@ -39,7 +39,7 @@ class HomeController extends Controller
             return Response::json(View::make('viewlinks', compact('allLinks'))->render());
         } else {
             // $allLinks = Link::with('tagged')->orderBy('published_on', 'desc')->simplePaginate(12);
-            $allLinks = Cache::remember('homepage', 60, function () {
+            $allLinks = Cache::remember('homepage', 10, function () {
                 return Link::with('tagged')->orderBy('published_on', 'desc')->simplePaginate(12);
             });
         }

@@ -123,6 +123,16 @@ $(document).on('click', '.pagination a', function (e) {
     e.preventDefault();
 });
 
+// $(document).on('click', '#feedback-button', function(){
+//     axios.get('/feedback')
+//         .then(function (response) {
+//         console.log(response);
+//     })
+//         .catch(function (error) {
+//         console.log(error);
+//     });
+// });
+
 $(document).ready(function(){
     populateNumbers();
     activateToolTip();
@@ -181,7 +191,6 @@ $(document).ready(function(){
                 location.reload(true);
             },
             error: function (data) {
-                console.log(data.responseText);
                 var obj = jQuery.parseJSON( data.responseText );
                if(obj.name){
                     $("#register-name").addClass("has-error");
@@ -195,6 +204,41 @@ $(document).ready(function(){
                     $("#register-password").addClass("has-error");
                     $( '#register-errors-password' ).html( obj.password );
                 }
+            }
+        });
+    });
+
+    var feedbackForm = $("#feedbackForm");
+    feedbackForm.submit(function(e){
+        feedbackForm.find('.form-group').removeClass('has-error');
+        feedbackForm.find('.text-danger').text('');
+        feedbackForm.find(".alert-success").addClass('hidden');
+        e.preventDefault();
+        var formData = feedbackForm.serialize();
+        $.ajax({
+            url:'/feedback',
+            type:'POST',
+            data:formData,
+            dataType: 'JSON',
+            success:function(response) {
+                $(".alert-success").text(response.message).removeClass('hidden');
+                feedbackForm[0].reset();
+                setTimeout(function(){
+                    $("#feedbackModal .close").click();
+                }, 2000);
+            },
+            error: function(response) {
+                var obj = jQuery.parseJSON( response.responseText );
+                $.each(obj, function(k, v){
+                    if($("input[name="+k+"]").length) {
+                        $("input[name="+k+"]").parent().addClass('has-error');
+                        $("input[name="+k+"]").next().text(v);    
+                    } else if($("textarea[name="+k+"]").length) {
+                        $("textarea[name="+k+"]").parent().addClass('has-error');
+                        $("textarea[name="+k+"]").next().text(v);    
+                    }
+                    
+                });
             }
         });
     });

@@ -32,6 +32,8 @@ Route::get('/tags', 'HomeController@showAllTags');
 
 Route::get('search/autocomplete', ['as' => 'search-autocomplete', 'uses' => 'SearchController@autocomplete']);
 
+Route::get('feedback', 'FeedbackController@index');
+Route::post('feedback', ['as'=>'feedback.store','uses'=>'FeedbackController@storeFeedback']);
 
 Route::group(['prefix' => config('backpack.base.route_prefix', 'admin'), 'middleware' => ['web', 'auth']], function () {
     CRUD::resource('source', 'Admin\SourceCrudController');
