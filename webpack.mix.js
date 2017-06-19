@@ -30,7 +30,6 @@ mix.combine([
 	'public/js/vendor.js',
     'resources/assets/js/nprogress.min.js',
     'public/js/app.js',
-    'resources/assets/js/plugin.js',
     'resources/assets/js/main.js',
 ], 'public/js/custom.js')
     .minify('public/js/custom.js');

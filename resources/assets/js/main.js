@@ -19,23 +19,6 @@ function activateToolTip() {
     $('[data-toggle="tooltip"]').tooltip();
 }
 
-function attachSocialShareToEach() {
-    $(".linksContainer").each(function(){
-        var title = $(this).find('.link-title a').attr('title');
-        var shareUrl = $(this).find('.socialShare').data('share');
-        var options = {
-            twitter: {
-                text: title,
-                via: 'learn_php_today'
-            },
-            facebook : true,
-            googlePlus : true,
-            linkedin: true
-        };
-        $(this).find('.socialShare').shareButtons(shareUrl, options);
-    });
-}
-
 function populateNumbers() {
     NProgress.start();
     var postIds = '';
@@ -143,7 +126,6 @@ $(document).on('click', '.pagination a', function (e) {
 $(document).ready(function(){
     populateNumbers();
     activateToolTip();
-    attachSocialShareToEach();
 
     var loginForm = $("#loginForm");
     loginForm.submit(function(e){

@@ -115,7 +115,7 @@
             <ul class="page-breadcrumb navbar-nav">
                 <li>
                     <i class="fa fa-home"></i>
-                        <a href="{{url('/')}}">Learn PHP Today</a>
+                        <a href="{{url('/')}}">Home</a>
                         @if(count(Request::segments()) > 0)
                             <i class="fa fa-angle-right"></i>
                         @endif

@@ -65,7 +65,6 @@
                         <i class="fa fa-heart recommendHeart" aria-hidden="true"></i>
                         <span class="" title="" dir="ltr"  id="recommend_{{ $user->id }}">0</span>
                     </a>
-                    <a class="socialShare" data-share="{{ $shareURL }}"> <!-- The share buttons will be inserted here --> </a>
                 </div>
             </div>
         </div>
