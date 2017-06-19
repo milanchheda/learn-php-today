@@ -35,12 +35,12 @@ class HomeController extends Controller
     {
         // Redis::set('name', 'Taylor');
         if (Request::ajax()) {
-            $allLinks = Link::with('tagged')->orderBy('published_on', 'desc')->simplePaginate(12);
+            $allLinks = Link::with('tagged')->orderBy('id', 'desc')->simplePaginate(12);
             return Response::json(View::make('viewlinks', compact('allLinks'))->render());
         } else {
             // $allLinks = Link::with('tagged')->orderBy('published_on', 'desc')->simplePaginate(12);
             $allLinks = Cache::remember('homepage', 10, function () {
-                return Link::with('tagged')->orderBy('published_on', 'desc')->simplePaginate(12);
+                return Link::with('tagged')->orderBy('id', 'desc')->simplePaginate(12);
             });
         }
         return View::make('home', compact('allLinks'));
@@ -50,7 +50,7 @@ class HomeController extends Controller
     public function myUpvotes() {
         $getExisting = DB::table('user_activites')->where('user_id', '=', Auth::id())->select('upvotes')->get()->toArray();
         $usersVotes = $getExisting[0]->upvotes;
-        $allLinks = Link::wherein('id', explode(',', $usersVotes))->orderBy('published_on', 'desc')->paginate(12);
+        $allLinks = Link::wherein('id', explode(',', $usersVotes))->orderBy('id', 'desc')->paginate(12);
         if (Request::ajax()) {
             return Response::json(View::make('viewlinks', compact('allLinks'))->render());
         }
@@ -60,7 +60,7 @@ class HomeController extends Controller
     public function myRecommends() {
         $getExisting = DB::table('user_activites')->where('user_id', '=', Auth::id())->select('recommends')->get()->toArray();
         $usersVotes = $getExisting[0]->recommends;
-        $allLinks = Link::wherein('id', explode(',', $usersVotes))->orderBy('published_on', 'desc')->paginate(12);
+        $allLinks = Link::wherein('id', explode(',', $usersVotes))->orderBy('id', 'desc')->paginate(12);
         if (Request::ajax()) {
             return Response::json(View::make('viewlinks', compact('allLinks'))->render());
         }
@@ -226,11 +226,11 @@ class HomeController extends Controller
 
     public function showTaggedLinks($slug) {
         if (Request::ajax()) {
-            $allLinks = Link::withAllTags([$slug])->orderBy('published_on', 'desc')->simplePaginate(12);
+            $allLinks = Link::withAllTags([$slug])->orderBy('id', 'desc')->simplePaginate(12);
             return Response::json(View::make('viewlinks', compact('allLinks'))->render());
         } else {
             $allLinks = Cache::remember("tag:". $slug, 60, function () use($slug) {
-                return Link::withAllTags([$slug])->orderBy('published_on', 'desc')->simplePaginate(12);
+                return Link::withAllTags([$slug])->orderBy('id', 'desc')->simplePaginate(12);
             });
             // $allLinks = Link::withAllTags([$slug])->orderBy('published_on', 'desc')->simplePaginate(12);    
         }
