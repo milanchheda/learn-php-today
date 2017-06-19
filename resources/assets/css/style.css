@@ -169,11 +169,18 @@ div.tagsBlock a {
 	border: #FB503B 1px solid;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
-	border-radius: 3px;
+	border-radius: 10px;
 	color: #FB503B !important;
 	font-weight: 700;
-	padding: 1px 5px;
+	padding: 3px 5px;
 	margin: 3px 2px;
+	font-size: 12px;
+}
+.tagsContainer {
+	background-color: #FFF;
+	padding: 15px 10px;
+	border-radius: 5px;
+	margin-top: 10px;
 }
 .page-breadcrumb {
 	list-style-type: none;
