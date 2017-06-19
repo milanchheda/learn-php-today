@@ -35,12 +35,12 @@ class HomeController extends Controller
     {
         // Redis::set('name', 'Taylor');
         if (Request::ajax()) {
-            $allLinks = Link::with('tagged')->orderBy('id', 'desc')->simplePaginate(12);
+            $allLinks = Link::with('tagged')->orderBy('links.id', 'desc')->simplePaginate(12);
             return Response::json(View::make('viewlinks', compact('allLinks'))->render());
         } else {
             // $allLinks = Link::with('tagged')->orderBy('published_on', 'desc')->simplePaginate(12);
             $allLinks = Cache::remember('homepage', 10, function () {
-                return Link::with('tagged')->orderBy('id', 'desc')->simplePaginate(12);
+                return Link::with('tagged')->orderBy('links.id', 'desc')->simplePaginate(12);
             });
         }
         return View::make('home', compact('allLinks'));
@@ -226,11 +226,11 @@ class HomeController extends Controller
 
     public function showTaggedLinks($slug) {
         if (Request::ajax()) {
-            $allLinks = Link::withAllTags([$slug])->orderBy('id', 'desc')->simplePaginate(12);
+            $allLinks = Link::withAllTags([$slug])->orderBy('links.id', 'desc')->simplePaginate(12);
             return Response::json(View::make('viewlinks', compact('allLinks'))->render());
         } else {
             $allLinks = Cache::remember("tag:". $slug, 60, function () use($slug) {
-                return Link::withAllTags([$slug])->orderBy('id', 'desc')->simplePaginate(12);
+                return Link::withAllTags([$slug])->orderBy('links.id', 'desc')->simplePaginate(12);
             });
             // $allLinks = Link::withAllTags([$slug])->orderBy('published_on', 'desc')->simplePaginate(12);    
         }
