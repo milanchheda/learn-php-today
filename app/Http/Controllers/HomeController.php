@@ -70,8 +70,9 @@ class HomeController extends Controller
     public function showPost($slug)
     {
         $model = new Link();
-        $urlOfSlug = $model->getSlugId($slug);
-        return redirect($urlOfSlug);
+        $urlOfSlug['urlOfSlug'] = $model->getSlugId($slug);
+        return View::make('showpost', $urlOfSlug);
+        // return redirect($urlOfSlug);
     }
 
     public function fetchNumbers() {
