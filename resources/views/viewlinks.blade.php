@@ -45,18 +45,6 @@
                         <i class="fa fa-eye fa-2" aria-hidden="true" style="vertical-align: middle;font-size:12px;"></i>
                         <span class="" id="view_{{ $user->id }}">0</span>
                     </a>
-
-                   <!--  <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ $shareURL }}&title={{ $user->title }}&summary=&source={{ $source }}" class="linkedin">
-                        <i class="fa fa-linkedin" aria-hidden="true" style="vertical-align: middle;font-size:12px;" data-toggle="tooltip" data-placement="top" title="Click to share on LinkedIN."></i>
-                    </a>
-
-                    <a href="http://www.facebook.com/sharer.php?u={{ $shareURL }}" target="_BLANK" class="facebook">
-                        <i class="fa fa-facebook" aria-hidden="true" style="vertical-align: middle;font-size:12px;" data-toggle="tooltip" data-placement="top" title="Click to share on Facebook."></i>
-                    </a>
-
-                    <a href="http://twitter.com/share?text={{ $user->title }}&url={{ $shareURL }}&via=learn_php_today" class="twitter-share-button twitter" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;">
-                        <i class="fa fa-twitter" aria-hidden="true" style="vertical-align: middle;font-size:12px;" data-toggle="tooltip" data-placement="top" title="Click to share on Twitter."></i>
-                    </a> -->
                     <a href="#" class="upvote" data-toggle="tooltip" data-placement="top" title="Click to Upvote.">
                         <i class="fa fa-arrow-up fa-4" aria-hidden="true" style="vertical-align: middle; font-size:12px"></i>
                         <span class="" id="upvote_{{ $user->id }}">0</span>
@@ -65,6 +53,20 @@
                         <i class="fa fa-heart recommendHeart" aria-hidden="true"></i>
                         <span class="" title="" dir="ltr"  id="recommend_{{ $user->id }}">0</span>
                     </a>
+
+                    <div class="pull-right socialShareButtons">
+                        <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ $shareURL }}&title={{ $user->title }}&summary=&source={{ $source }}" class="linkedin">
+                            <i class="fa fa-linkedin" aria-hidden="true" style="vertical-align: middle;font-size:12px;" data-toggle="tooltip" data-placement="top" title="Click to share on LinkedIN."></i>
+                        </a>
+
+                        <a href="http://www.facebook.com/sharer.php?u={{ $shareURL }}" target="_BLANK" class="facebook">
+                            <i class="fa fa-facebook" aria-hidden="true" style="vertical-align: middle;font-size:12px;" data-toggle="tooltip" data-placement="top" title="Click to share on Facebook."></i>
+                        </a>
+
+                        <a href="http://twitter.com/share?text={{ $user->title }}&url={{ $shareURL }}&via=learn_php_today" class="twitter-share-button twitter" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;">
+                            <i class="fa fa-twitter" aria-hidden="true" style="vertical-align: middle;font-size:12px;" data-toggle="tooltip" data-placement="top" title="Click to share on Twitter."></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
