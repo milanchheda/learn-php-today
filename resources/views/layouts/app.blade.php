@@ -53,6 +53,9 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-0">
+                        <i class="fa fa-search"></i>
+                    </button>
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
@@ -60,7 +63,13 @@
                         <img class="logo" src="{{ asset('images/logo.jpg') }}">
                     </a>
                 </div>
-
+                <div class="navbar-collapse hidden-desktop" id="navbar-collapse-0">
+                    <form class="navbar-form navbar-right" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search" id="searchMobile">
+                        </div>           
+                    </form>
+                </div>
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
@@ -72,13 +81,15 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" id="searchIcon" class="hidden-mobile">
+                                <i class="fa fa-search"></i>
+                            </a>
+                        </li>
                         <!-- Authentication Links -->
                         @if (Auth::guest())
                             <!-- <li><a href="{{ route('login') }}">Login</a></li> -->
                             <!-- <li><a href="{{ route('register') }}">Register</a></li> -->
-                            <!-- <li>
-                                <a href="#" id="Search">Search</a>
-                            </li> -->
                             <li><a href="#" data-toggle="modal" data-target="#loginModal" id="loginNavigation">Login</a></li>
                             <!-- <li><a href="#" data-toggle="modal" data-target="#registerModal" id="registerNavigation">Register</a></li> -->
 
@@ -111,6 +122,11 @@
                 </div>
             </div>
         </nav>
+        <div class="container container-fluid" id="searchContainer">
+            <input type="text" id="search" name="query" placeholder="Search posts">
+            <i id="searchclear" class="fa fa-times-circle" aria-hidden="true"></i>
+
+        </div>
         <div class="container container-fluid" id="breadCrumbContainer">
             <ul class="page-breadcrumb navbar-nav">
                 <li>

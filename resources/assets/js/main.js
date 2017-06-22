@@ -1,10 +1,12 @@
-function getPosts(page) {
+function getPosts(page, searchTerm) {
     $.ajax({
         url : '?page=' + page,
         dataType: 'json',
+        data: {searchTerm: searchTerm},
     }).done(function (data) {
-    	NProgress.set(100);
         $('#links-container').html(data);
+        if(searchTerm == '')
+            NProgress.set(100);
         activateToolTip();
         populateNumbers();
         // assignVoting();
@@ -107,19 +109,42 @@ $(".recommendHeart").on('animationend', function(){
   $(this).toggleClass('is_animating');
 });
 
-$("#Search").on('click', function(){
-    $(".search-wrapper").show();
-    $(".js-menu-screen").addClass('is-visible');
+$(document).on('click', '#searchIcon', function(){
+    $("#searchContainer #search").slideToggle('slow');
 });
 
-$(".close-btn").on('click', function(){
-    $(".search-wrapper").hide();
-    $(".js-menu-screen").removeClass('is-visible');
+$("#search").on('keyup', function(e){
+    var searchTerm = $(this).val();
+    $("#searchContainer #searchclear").hide();
+    if(e.keyCode == 8) {
+        getPosts(1, $("#search").val());
+    } else if(searchTerm.length > 2) {
+        $("#searchContainer #searchclear").show();
+        setTimeout(function(){
+            getPosts(1, searchTerm);
+        }, 1000);
+    }
+});
+
+$("#searchMobile").on('keyup', function(e){
+    var searchTerm = $(this).val();
+    if(searchTerm.length > 2) {
+        // $("#searchContainer #searchclear").show();
+        setTimeout(function(){
+            getPosts(1, searchTerm);
+        }, 1000);
+    }
+});
+
+$(document).on('click', '#searchclear', function(){
+    $("#search").val('');
+    getPosts(1, $("#search").val());
+    $('#searchIcon').trigger('click');
 });
 
 $(document).on('click', '.pagination a', function (e) {
     NProgress.start();
-    getPosts($(this).attr('href').split('page=')[1]);
+    getPosts($(this).attr('href').split('page=')[1], $("#search").val());
     e.preventDefault();
 });
 

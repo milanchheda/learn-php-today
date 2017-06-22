@@ -33,9 +33,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // Redis::set('name', 'Taylor');
         if (Request::ajax()) {
-            $allLinks = Link::with('tagged')->orderBy('links.id', 'desc')->simplePaginate(12);
+            $params = Request::all();
+            $allLinks = Link::with('tagged');
+            if(isset($params['searchTerm']) && !empty($params['searchTerm'])) {
+                $searchTerm = $params['searchTerm'];
+                $allLinks = $allLinks->where('links.title', 'like', '%' . $searchTerm . '%');
+            }
+            $allLinks = $allLinks->orderBy('links.id', 'desc')->simplePaginate(12);
             return Response::json(View::make('viewlinks', compact('allLinks'))->render());
         } else {
             // $allLinks = Link::with('tagged')->orderBy('published_on', 'desc')->simplePaginate(12);

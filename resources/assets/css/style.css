@@ -219,3 +219,44 @@ div.tagsBlock a {
 .socialShareButtons {
 	margin-right: 40px;
 }
+#searchContainer {
+	margin-top: -21px;
+}
+#searchContainer #search {
+	display: none;
+	border: 0;
+	width: 97%;
+	height: 40px;
+	line-height: 50px;
+	font-size: 20px;
+	padding-left: 10px;
+	margin-left: 16px;
+	margin-bottom: 15px;
+}
+#searchContainer #searchclear {
+    float: right;
+    margin-right: 5px;
+    margin-top: -45px;
+    position: relative;
+    z-index: 2;
+    color: #333;
+    right: 30px;
+    font-size: 20px;
+    cursor: pointer;
+    /*display: none;*/
+}
+.hidden-mobile {
+  display: none !important; /* This is how it looks on mobile */
+}
+
+@media (min-width: 600px) {
+  .hidden-mobile {
+    display: block !important; /* This is how it looks on desktop */
+  }
+}
+
+@media (min-width: 768px) {
+  .hidden-desktop {
+    display: none !important; /* This is how it looks on desktop */
+  }
+}
