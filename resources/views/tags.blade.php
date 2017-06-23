@@ -7,9 +7,9 @@
 		<?php
 			$tagUrl = url('/') . '/tag/' . $tags->slug;
 		?>
-		<div class="col-xs-6 col-md-2 col-lg-2 col-sm-2 tagsBlock">
+		<div class="col-xs-6 col-md-3 col-lg-3 col-sm-3 tagsBlock">
 		<a href={{ $tagUrl }} class='tag'>
-			{{ strtoupper($tags->name) }} ({{ $tags->count }})
+			{{ strtoupper(htmlspecialchars_decode($tags->name)) }} ({{ $tags->count }})
 		</a>
 		</div>
 		
