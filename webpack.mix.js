@@ -12,7 +12,7 @@ const { mix } = require('laravel-mix');
  */
 
 mix.js('resources/assets/js/app.js', 'public/js')
-.extract(['vue', 'jquery']);
+.extract(['vue', 'jquery', 'selectize']);
 mix.sass('resources/assets/sass/app.scss', 'public/css')
 .options({
   processCssUrls: false

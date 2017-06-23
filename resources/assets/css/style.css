@@ -260,3 +260,6 @@ div.tagsBlock a {
     display: none !important; /* This is how it looks on desktop */
   }
 }
+.selectize-control {
+	position: initial !important;
+}

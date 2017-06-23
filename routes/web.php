@@ -14,11 +14,13 @@
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+Auth::routes();
+
 Route::get('/', 'HomeController@index');
 Route::get('/post/{slug}', 'HomeController@showPost');
 Route::post('/numbers/fetch','HomeController@fetchNumbers');
 Route::post('/numbers/update', ['middleware' => 'auth', 'uses' => 'HomeController@updateNumbers']);
-Auth::routes();
+Route::post('/saveTagsForLinks', ['middleware' => 'auth', 'uses' => 'HomeController@saveTagsForLinks']);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -30,7 +32,8 @@ Route::get('/top-recommends', 'HomeController@topRecommends');
 Route::get('/tag/{slug}', 'HomeController@showTaggedLinks');
 Route::get('/tags', 'HomeController@showAllTags');
 
-Route::get('search/autocomplete', ['as' => 'search-autocomplete', 'uses' => 'SearchController@autocomplete']);
+Route::get('/addTags', ['middleware' => 'auth', 'uses' => 'HomeController@addTags']);
+// Route::get('search/autocomplete', ['as' => 'search-autocomplete', 'uses' => 'SearchController@autocomplete']);
 
 Route::get('feedback', 'FeedbackController@index');
 Route::post('feedback', ['as'=>'feedback.store','uses'=>'FeedbackController@storeFeedback']);

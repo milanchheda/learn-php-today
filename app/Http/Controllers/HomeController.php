@@ -249,4 +249,30 @@ class HomeController extends Controller
         $allTags['allTags'] = $model->getAllTagsAndCounts();
         return View::make('tags', $allTags);
     }
+
+    public function addTags() {
+        if(Auth::check() && Auth::user()->hasRole('administrators')) {
+            $allLinksWithoutTags['allExistingTags'] = Link::existingTags()->pluck('name');
+            $allLinksWithoutTags['allLinksWithoutTags'] = Link::select(DB::raw('links.*'))->leftJoin('tagging_tagged', 'tagging_tagged.taggable_id', '=', 'links.id')->whereNull('tagging_tagged.taggable_id')->simplePaginate(20);
+            return View::make('tags.index', $allLinksWithoutTags);
+        } else{
+            abort(403, 'Unauthorized action.');
+        }
+    }
+
+    public function saveTagsForLinks() {
+        $params = Request::all();
+        if($params['linksId'] != '') {
+            $tagsArray = explode(',', $params['tags']);
+            $linksIds = explode(',', rtrim($params['linksId'], ','));
+            foreach ($linksIds as $key => $value) {
+                $linkObj = Link::find($value);
+                $linkObj->untag();
+                $linkObj->tag($tagsArray);
+            }
+            return response()->json(200);
+        } else {
+            return response()->json(401);
+        }
+    }
 }
