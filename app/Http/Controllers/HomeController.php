@@ -253,7 +253,7 @@ class HomeController extends Controller
     public function addTags() {
         if(Auth::check() && Auth::user()->hasRole('administrators')) {
             $allLinksWithoutTags['allExistingTags'] = Link::existingTags()->pluck('name');
-            $allLinksWithoutTags['allLinksWithoutTags'] = Link::select(DB::raw('links.*'))->leftJoin('tagging_tagged', 'tagging_tagged.taggable_id', '=', 'links.id')->whereNull('tagging_tagged.taggable_id')->simplePaginate(20);
+            $allLinksWithoutTags['allLinksWithoutTags'] = Link::select(DB::raw('links.*'))->leftJoin('tagging_tagged', 'tagging_tagged.taggable_id', '=', 'links.id')->whereNull('tagging_tagged.taggable_id')->orWhere('tagging_tagged.tag_slug', 'uncategorized')->simplePaginate(10);
             return View::make('tags.index', $allLinksWithoutTags);
         } else{
             abort(403, 'Unauthorized action.');
