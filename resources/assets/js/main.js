@@ -151,7 +151,11 @@ $("#searchMobile").on('keyup', function(e){
 
 $(document).on('click', '#searchclear', function(){
     $("#search").val('');
-    getPosts($('#links-container').data('pg-no'), $("#search").val());
+    var pageNumberToUse = 1;
+    if($('#links-container').data('pg-no')) {
+        pageNumberToUse = $('#links-container').data('pg-no');
+    }
+    getPosts(pageNumberToUse, $("#search").val());
     $('#searchIcon').trigger('click');
 });
 
