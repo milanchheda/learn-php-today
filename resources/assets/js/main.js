@@ -194,26 +194,27 @@ $(document).on('click', '#saveTags', function(){
 $(document).ready(function(){
     populateNumbers();
     activateToolTip();
-
-    $('#tags').selectize({
-        delimiter: ',',
-        persist: false,
-        valueField: 'tag',
-        labelField: 'tag',
-        searchField: 'tag',
-        options: tags,
-        create: false,
-        maxOptions: 100,
-        hideSelected: true,
-        create: function(input) {
-            return {
-                tag: input
+    if($('#tagsSelector #tags').length) {
+        $('#tagsSelector #tags').selectize({
+            delimiter: ',',
+            persist: false,
+            valueField: 'tag',
+            labelField: 'tag',
+            searchField: 'tag',
+            options: tags,
+            create: false,
+            maxOptions: 100,
+            hideSelected: true,
+            create: function(input) {
+                return {
+                    tag: input
+                }
+            },
+            onChange: function(value) {
+                $("#selectedTags").val(value);
             }
-        },
-        onChange: function(value) {
-            $("#selectedTags").val(value);
-        }
-    });
+        });
+    }
 
     var loginForm = $("#loginForm");
     loginForm.submit(function(e){

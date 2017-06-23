@@ -10,7 +10,7 @@
 	    	</div>
 	    @endforeach
 	    <div class="container">
-	    	<div class="form-group">
+	    	<div class="form-group" id="tagsSelector">
 	    		<input type="text" name="tags" id="tags">
 	    		<input type="hidden" name="selectedTags" id="selectedTags">
 	    	</div>
