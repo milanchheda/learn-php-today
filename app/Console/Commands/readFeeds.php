@@ -41,7 +41,7 @@ class readFeeds extends Command
      */
     public function handle()
     {
-        $allSources = DB::table('sources')->where('status', '=', 1)->get()->random(5)->pluck('xml_url')->toArray();
+        $allSources = DB::table('sources')->where('status', '=', 1)->get()->random(10)->pluck('xml_url')->toArray();
         $linksArray = [];
         $feed = Feeds::make($allSources, 5);
         $data = array(

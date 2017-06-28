@@ -49,8 +49,8 @@
                         <i class="fa fa-arrow-up fa-4" aria-hidden="true" style="vertical-align: middle; font-size:12px"></i>
                         <span class="" id="upvote_{{ $user->id }}">0</span>
                     </a>
-                    <a href="#" class="recommend" data-toggle="tooltip" data-placement="top" title="Click to recommend.">
-                        <i class="fa fa-heart recommendHeart" aria-hidden="true"></i>
+                    <a href="#" class="recommend" data-toggle="tooltip" data-placement="top" title="Click to bookmark.">
+                        <i class="fa fa-bookmark recommendHeart" aria-hidden="true"></i>
                         <span class="" title="" dir="ltr"  id="recommend_{{ $user->id }}">0</span>
                     </a>
 
