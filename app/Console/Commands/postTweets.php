@@ -43,7 +43,7 @@ class postTweets extends Command
     public function handle()
     {
         $allLinks = Link::with('tagged')->inRandomOrder()->first();
-        $shareURL = url('/') . '/post/' . $allLinks['slug'];
+        $shareURL = url('/') . '/post/' . $allLinks['slug'] . '?ref=learnphptoday';
         $allStrings = explode(' ', $allLinks['title']);
         $keywordsArray = [
             'php',
@@ -87,7 +87,7 @@ class postTweets extends Command
         }, $keywordsArray);
         $tweetText = implode(' ', $allStrings);
         
-        Twitter::postTweet(['status' => substr($tweetText, 0, 100) . ' ' . $shareURL, 'format' => 'json']);
+        Twitter::postTweet(['status' => substr($tweetText, 0, 100) . ' ' . $shareURL . ' #learnphptoday', 'format' => 'json']);
         // die();
     }
 }
