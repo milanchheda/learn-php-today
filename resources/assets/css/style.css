@@ -263,3 +263,7 @@ div.tagsBlock a {
 .selectize-control {
 	position: initial !important;
 }
+.row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
