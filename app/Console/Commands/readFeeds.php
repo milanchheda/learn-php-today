@@ -7,6 +7,7 @@ use DB;
 use Feeds;
 use App\Link;
 use App\LinkView;
+use Twitter;
 
 class readFeeds extends Command
 {

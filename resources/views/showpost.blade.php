@@ -14,7 +14,7 @@
       }
     ?>
     <script type="text/javascript">
-      window.location = "{{ $urlOfSlug }}";
+      window.location = "{{ $urlOfSlug }}?ref=learnphptoday";
     </script>
   </div>
 </div>
