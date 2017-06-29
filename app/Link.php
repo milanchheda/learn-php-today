@@ -24,9 +24,9 @@ class Link extends Model
 
     public function getSlugId($slug) {
     	if(isset($slug) && trim($slug) != '') {
-    		$result = Self::where('slug', '=', $slug)->select('id', 'link')->get()->toArray();
+    		$result = Self::where('slug', '=', $slug)->select('id', 'link', 'title')->get()->toArray();
     		DB::table('link_views')->where('link_id', '=', $result[0]['id'])->increment('view_count');
-    		return $result[0]['link'];
+    		return $result[0];
     	}
     }
 

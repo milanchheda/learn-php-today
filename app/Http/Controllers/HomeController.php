@@ -12,6 +12,7 @@ use DB;
 use Auth;
 use App\UserActivites;
 use Cache;
+use SEO;
 
 class HomeController extends Controller
 {
@@ -75,7 +76,15 @@ class HomeController extends Controller
     public function showPost($slug)
     {
         $model = new Link();
-        $urlOfSlug['urlOfSlug'] = $model->getSlugId($slug);
+        $urlOfSlug = $model->getSlugId($slug);
+
+        SEO::setTitle($urlOfSlug['title']);
+        SEO::opengraph()->setUrl(Request::url());
+        SEO::opengraph()->setSiteName('Learn PHP Today');
+        SEO::setCanonical(Request::url());
+        SEO::twitter()->setSite('@learn_php_today');
+
+        $urlOfSlug['urlOfSlug'] = $urlOfSlug['link'];
         return View::make('showpost', $urlOfSlug);
         // return redirect($urlOfSlug);
     }

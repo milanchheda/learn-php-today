@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="Description" content="LearnPHPToday is a news & feeds related to PHP. Learn something new everyday."/>
-    <meta name="Keywords" content="Learn PHP, PHP, PHP7, PHP5.6, Laravel, Learn PHP Today, PHP Today"/>
+    
+    <!-- SEO  -->
+    {!! SEO::generate() !!}
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>Learn PHP Today</title>
 
     <link href="{{ mix('css/custom.min.css') }}" rel="stylesheet">
     
@@ -39,6 +39,7 @@
     <?php
     }
     ?>
+    
 </head>
 <body>
     <div id="app">
