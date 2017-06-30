@@ -69,6 +69,7 @@ class readFeeds extends Command
                         $newLink->link = $item->get_permalink();
                         $newLink->slug = $slug;
                         $newLink->content = substr($item->get_description(), 0, 700);
+                        $newLink->submitted_by = 1;
                         $newLink->save();
 
                         if(isset($categories)) {

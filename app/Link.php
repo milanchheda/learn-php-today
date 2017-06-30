@@ -17,7 +17,7 @@ class Link extends Model
      * @var array
      */
     protected $fillable = [
-        'title', 'link', 'slug', 'content', 'published_on'
+        'title', 'link', 'slug', 'content', 'published_on', 'submitted_by'
     ];
     protected $dates = ['created_at', 'updated_at', 'published_on'];
 

@@ -77,11 +77,16 @@
                         <li {{{ (Request::is('top-views') ? 'class=active' : '') }}}><a href="{{ url('top-views') }}">Top Views</a></li>
                         <li {{{ (Request::is('tags') ? 'class=active' : '') }}}><a href="{{ url('tags') }}">Categories</a></li>
                         <!-- <li {{{ (Request::is('top-upvotes') ? 'class=active' : '') }}}><a href="{{ url('top-upvotes') }}">Top Upvotes</a></li>
-                        <li {{{ (Request::is('top-recommends') ? 'class=active' : '') }}}><a href="{{ url('top-recommends') }}">Top Recommends</a></li> -->
+                        <li {{{ (Request::is('top-recommends') ? 'class=active' : '') }}}><a href="{{ url('top-recommends') }}">Top Bookmarked</a></li> -->
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
+                        <!-- <li>
+                            <a href="#" id="addNews" class="hidden-mobile">
+                                <i class="fa fa-plus"></i>
+                            </a>
+                        </li> -->
                         <li>
                             <a href="#" id="searchIcon" class="hidden-mobile">
                                 <i class="fa fa-search"></i>
@@ -103,7 +108,7 @@
                                 <ul class="dropdown-menu" role="menu">
                                     @if (!Auth::guest())
                                         <li><a href="{{ url('upvotes') }}">My Upvotes</a></li>
-                                        <li><a href="{{ url('recommends') }}">Recommends by me</a></li>
+                                        <li><a href="{{ url('my-bookmarks') }}">My Bookmarks</a></li>
                                     @endif
                                     <li>
                                         <a href="{{ route('logout') }}"
@@ -255,8 +260,6 @@
                     <div class="panel-body">
                         <div class="feedbackContainer">
                             <!-- <h1>Feedback Form</h1> -->
-
-                            
                                 <div class="alert alert-success hidden">
                                 </div>
                             

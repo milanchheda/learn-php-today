@@ -16,7 +16,7 @@
 
         <div class="col-xs-12 col-md-4 col-lg-4 col-sm-6 linksContainer" data-toggle="tooltip" data-placement="top" style="height: 250px;" link-id={{ $user->id }}>
             <div class="well" style="height: 100%">
-                <h4 class="link-title">
+                <h1 class="link-title">
                     <a href="/post/{{ $user->slug }}" title="{{ $user->title }}">{{ $user->title }}
                         <small>
                         <?php
@@ -27,7 +27,7 @@
                         ?>
                         </small>
                     </a>
-                </h4>
+                </h1>
                 <div class="description">{{ str_limit(strip_tags($user->content), 200) }}</div>
                 <!-- <div class="pull-left leftBottom">{{ Carbon\Carbon::parse($user->published_on)->diffForHumans() }}</div> -->
                 <?php

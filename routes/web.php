@@ -25,7 +25,7 @@ Route::post('/saveTagsForLinks', ['middleware' => 'auth', 'uses' => 'HomeControl
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/upvotes', ['middleware' => 'auth', 'uses' => 'HomeController@myUpvotes']);
-Route::get('/recommends', ['middleware' => 'auth', 'uses' => 'HomeController@myRecommends']);
+Route::get('/my-bookmarks', ['middleware' => 'auth', 'uses' => 'HomeController@myRecommends']);
 Route::get('/top-views', 'HomeController@topViews');
 Route::get('/top-upvotes', 'HomeController@topUpvotes');
 Route::get('/top-recommends', 'HomeController@topRecommends');
