@@ -85,8 +85,9 @@ class HomeController extends Controller
         SEO::twitter()->setSite('@learn_php_today');
 
         $urlOfSlug['urlOfSlug'] = $urlOfSlug['link'];
-        return View::make('showpost', $urlOfSlug);
-        // return redirect($urlOfSlug);
+        // return View::make('showpost', $urlOfSlug);
+
+        return redirect($urlOfSlug['link'] . '?ref=learnphptoday');
     }
 
     public function fetchNumbers() {
