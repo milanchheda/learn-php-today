@@ -66,6 +66,9 @@
                         <a href="http://twitter.com/share?text={{ $user->title }}&url={{ $shareURL }}&via=learn_php_today" class="twitter-share-button twitter" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;">
                             <i class="fa fa-twitter" aria-hidden="true" style="vertical-align: middle;font-size:12px;" data-toggle="tooltip" data-placement="top" title="Click to share on Twitter."></i>
                         </a>
+                        <a href="http://www.reddit.com/submit?url={{ $shareURL }}&title={{ $user->title }}" target="_BLANK" class="reddit">
+                            <i class="fa fa-reddit" aria-hidden="true" style="vertical-align: middle;font-size:12px;" data-toggle="tooltip" data-placement="top" title="Click to share on Reddit."></i>
+                        </a>
                     </div>
                 </div>
             </div>

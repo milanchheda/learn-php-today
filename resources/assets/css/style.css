@@ -129,6 +129,9 @@ div.pagination {
 .twitter:hover .fa-twitter {
 	color: #0084b4;
 }
+.reddit:hover .fa-reddit {
+	color: #C71E21;
+}
 .link-tags {
 	width: 90%;
     border-top: #eee 1px solid;
