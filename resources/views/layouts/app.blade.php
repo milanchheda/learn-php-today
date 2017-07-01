@@ -97,7 +97,7 @@
                             <!-- <li><a href="{{ route('login') }}">Login</a></li> -->
                             <!-- <li><a href="{{ route('register') }}">Register</a></li> -->
                             <li><a href="#" data-toggle="modal" data-target="#loginModal" id="loginNavigation">Login</a></li>
-                            <!-- <li><a href="#" data-toggle="modal" data-target="#registerModal" id="registerNavigation">Register</a></li> -->
+                            <li><a href="#" data-toggle="modal" data-target="#registerModal" id="registerNavigation" class="hidden">Register</a></li>
 
                         @else
                             <li class="dropdown">
