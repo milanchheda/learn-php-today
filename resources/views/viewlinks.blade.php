@@ -1,3 +1,44 @@
+<!-- <div class="profile-cover" style="background: rgb(77, 66, 97);">
+    <div class="container padding-top-3 user-select full-width">
+        <div class="cols-flex">
+            <div class="category-header-left">
+                <div class="profile-avatar">
+                    <a href="/@dummy" class="router-link-exact-active router-link-active"><img src="/imgs/default-avatar.png" alt="" class="circle">
+                    </a>
+                </div>
+            </div>
+            <div class="category-header-middle">
+                <h1>
+                        
+                    </h1> <a href="/@dummy" class="router-link-exact-active router-link-active"><h2><i aria-hidden="true" class="v-icon v-atsign"></i>dummy
+                        </h2></a>
+                <p></p> <span class="inline-block"><i aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="" class="v-icon v-submissions" data-original-title="Submissions"></i>2
+                    </span> <span class="inline-block"><i aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="" class="v-icon v-chat" data-original-title="Comments"></i>2
+                    </span> <span class="inline-block"><i aria-hidden="true" class="v-icon v-calendar"></i>Joined: Jul 3rd
+                    </span>
+            </div>
+            <div class="category-header-right">
+                <div class="karma">
+                    <div class="karma-number">
+                        1
+                    </div>
+                    <div class="karma-text">
+                        Post Karma
+                    </div>
+                </div>
+                <div class="karma">
+                    <div class="karma-number">
+                        0
+                    </div>
+                    <div class="karma-text">
+                        Comment Karma
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
 <div class="container-fluid container">
     @foreach($allLinks as $user)
     <?php
@@ -11,6 +52,10 @@
                 $tagHtml .= "<a href='" . $tagUrl . "' class='tag'>" . strtoupper($tag->name) . "</a>";
                 $count++;
             }
+            // $appendCount = count($user->tags) > 5 ? count($user->tags) - 5 : 0;
+            // if($appendCount) {
+            //     $tagHtml .= "<a href='" . $tagUrl . "' class='tag countTag'>" . $appendCount . "</a>";
+            // }
         }
     ?>
 

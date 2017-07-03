@@ -270,8 +270,16 @@ $(document).ready(function(){
             type:'POST',
             data:formData,
             success:function(data){
-                $('#registerModal').modal( 'hide' );
-                location.reload(true);
+                $("#registerModal .alert-success").text('You have successfully registered. An email is sent to you for verification.').removeClass('hidden');
+                registerForm[0].reset();
+                grecaptcha.reset();
+                $("#registerToSystem").html('Register');
+                // setTimeout(function(){
+                //     $("#registerModal .close").click();
+                //     // $('#registerModal').modal( 'hide' );
+                // }, 2000);
+                // $('#registerModal').modal( 'hide' );
+                // location.reload(true);
             },
             error: function (data) {
                 var obj = jQuery.parseJSON( data.responseText );
@@ -304,7 +312,7 @@ $(document).ready(function(){
             data:formData,
             dataType: 'JSON',
             success:function(response) {
-                $(".alert-success").text(response.message).removeClass('hidden');
+                $("#feedbackModal .alert-success").text(response.message).removeClass('hidden');
                 feedbackForm[0].reset();
                 setTimeout(function(){
                     $("#feedbackModal .close").click();

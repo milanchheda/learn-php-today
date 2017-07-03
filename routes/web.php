@@ -42,3 +42,5 @@ Route::group(['prefix' => config('backpack.base.route_prefix', 'admin'), 'middle
     CRUD::resource('source', 'Admin\SourceCrudController');
     CRUD::resource('links', 'Admin\LinksCrudController');
 });
+
+Route::get('/verifyemail/{token}', 'Auth\RegisterController@verify');

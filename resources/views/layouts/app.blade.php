@@ -168,6 +168,7 @@
                 </div>
                 <div class="panel panel-filled">
                     <div class="panel-body">
+                        <div class="alert alert-success hidden"></div>
                         <form action="{{url('/register')}}" id="registerForm" method="post" name="registerForm">
                             <div class="form-group" id="register-name">
                                 <label class="control-label" for="name">Name</label> <input class="form-control" id="name" name="name"

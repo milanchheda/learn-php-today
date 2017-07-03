@@ -153,7 +153,22 @@ div.pagination {
 /*.tag + .tag {
     margin-left: 5px
 }*/
-
+.countTag {
+	float: left;
+	display: block;
+	border: none !important;
+	color: #d00 !important;
+	/*font-weight: bold;*/
+	font-size: 1.3em;
+	padding: 1px 5px;
+	margin: 3px 2px;
+}
+/*.countTag:before {
+	content: "+";
+    margin-right: 2px;
+    vertical-align: middle;
+    font-size: 12px;
+}*/
 .tag:hover {
     text-decoration: none;
     border-color: none;
