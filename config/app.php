@@ -194,6 +194,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
         Thujohn\Twitter\TwitterServiceProvider::class,
+        Roumen\Feed\FeedServiceProvider::class,
 
     ],
 
@@ -244,6 +245,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Feeds'    => willvincent\Feeds\Facades\FeedsFacade::class,
+        'Feed' => Roumen\Feed\Feed::class,
         'Input' => Illuminate\Support\Facades\Input::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,

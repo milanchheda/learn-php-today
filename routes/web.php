@@ -44,3 +44,5 @@ Route::group(['prefix' => config('backpack.base.route_prefix', 'admin'), 'middle
 });
 
 Route::get('/verifyemail/{token}', 'Auth\RegisterController@verify');
+
+Route::get('feed', 'HomeController@createRssFeed');

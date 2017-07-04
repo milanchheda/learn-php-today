@@ -13,6 +13,8 @@ use Auth;
 use App\UserActivites;
 use Cache;
 use SEO;
+use App;
+use URL;
 
 class HomeController extends Controller
 {
@@ -285,4 +287,31 @@ class HomeController extends Controller
             return response()->json(401);
         }
     }
+
+    public function createRssFeed() {
+       /* create new feed */
+       $feed = App::make("feed");
+
+       /* creating rss feed with our most recent 20 posts */
+       $posts = \DB::table('links')->orderBy('published_on', 'desc')->take(20)->get();
+
+       /* set your feed's title, description, link, pubdate and language */
+       $feed->title = 'Learn PHP Today';
+       $feed->description = 'LearnPHPToday is a website for developers to read news and feeds related to PHP, Laravel, Symfony and everything related to PHP. Learn something new everyday.';
+       $feed->logo = env('APP_URL') . '/images/logo.jpg';
+       $feed->link = url('feed');
+       $feed->setDateFormat('datetime');
+       $feed->pubdate = $posts[0]->published_on;
+       $feed->lang = 'en';
+       $feed->setShortening(true);
+       $feed->setTextLimit(100);
+
+       foreach ($posts as $post)
+       {
+           $feed->add($post->title, '', URL::to('post/'.$post->slug), $post->published_on, $post->content, $post->content);
+       }
+
+       return $feed->render('rss');
+    }
+    
 }

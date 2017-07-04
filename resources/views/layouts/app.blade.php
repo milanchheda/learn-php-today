@@ -7,7 +7,8 @@
     
     <!-- SEO  -->
     {!! SEO::generate() !!}
-
+    <!-- Feed  -->
+    {!! Feed::link(url('feed'), 'rss', 'Learn PHP Today Feed', 'en'); !!}
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -39,7 +40,6 @@
     <?php
     }
     ?>
-    
 </head>
 <body>
     <div id="app">

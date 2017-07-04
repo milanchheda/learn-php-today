@@ -19,6 +19,7 @@
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.4",
         "predis/predis": "^1.1",
+        "roumen/feed": "^2.10",
         "rtconner/laravel-tagging": "~2.2",
         "thujohn/twitter": "^2.2",
         "willvincent/feeds": "1.1.*"
