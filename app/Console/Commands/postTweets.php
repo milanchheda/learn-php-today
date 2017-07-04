@@ -8,6 +8,7 @@ use Feeds;
 use App\Link;
 use App\LinkView;
 use Twitter;
+use Carbon\Carbon;
 
 class postTweets extends Command
 {
@@ -42,7 +43,8 @@ class postTweets extends Command
      */
     public function handle()
     {
-        $allLinks = Link::with('tagged')->inRandomOrder()->first();
+        $firstDayOfPrevMonth = new Carbon('first day of last month');
+        $allLinks = Link::with('tagged')->where('published_on', '>', $firstDayOfPrevMonth)->inRandomOrder()->first();
         $shareURL = url('/') . '/post/' . $allLinks['slug'] . '?ref=learnphptoday';
         $allStrings = explode(' ', $allLinks['title']);
         $keywordsArray = [
