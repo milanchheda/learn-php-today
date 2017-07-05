@@ -151,6 +151,14 @@
                 </li>
                 @endfor
             </ul>
+            <ul class="page-breadcrumb navbar-nav pull-right social-icons">
+                <li>
+                    <a href="{{url('http://feeds.feedburner.com/learnphptoday-feeds')}}"><i class="fa fa-rss"></i></a>
+                </li>
+                <li>
+                    <a href="{{url('http://twitter.com/learnphptoday')}}"><i class="fa fa-twitter"></i></a>
+                </li>
+            </ul>
         </div>
         @yield('content')
     </div>

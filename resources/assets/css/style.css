@@ -31,6 +31,15 @@ a {
 	font-weight: 400 !important;
 	margin-top: 2px;
 }
+ul.social-icons {
+	margin-right: 5%;
+}
+ul.social-icons li {
+	margin: 0 5px;
+}
+ul.social-icons li i {
+	font-size: 18px;
+}
 @media (max-width: 480px) {
 	.linksContainer {
 		margin: 20px 0;
@@ -38,6 +47,9 @@ a {
 	}
 	.linksContainer h1 {
 		font-size: 14px;
+	}
+	ul.social-icons {
+		margin-right: 10%;
 	}
 }
 .well {
