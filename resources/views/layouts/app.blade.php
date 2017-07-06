@@ -153,6 +153,11 @@
             </ul>
             <ul class="page-breadcrumb navbar-nav pull-right social-icons">
                 <li>
+                    <a href="https://feedburner.google.com/fb/a/mailverify?uri=learnphptoday-feeds&amp;loc=en_US" title="Subscribe to Learn PHP Today by Email">
+                        <i class="fa fa-newspaper-o" aria-hidden="true"></i>
+                    </a>
+                </li>
+                <li>
                     <a href="{{url('http://feeds.feedburner.com/learnphptoday-feeds')}}"><i class="fa fa-rss"></i></a>
                 </li>
                 <li>
