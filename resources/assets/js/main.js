@@ -10,8 +10,10 @@ if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine
 if(isMobile) {
     $("#searchContainer").hide();
     $("#navbar-collapse-0").addClass('collapse');
+    $(".pagination").show();
 } else {
     $("#navbar-collapse-0").hide();
+    $(".pagination").hide();
 }
 
 function getPosts(page, searchTerm, params) {
@@ -27,6 +29,7 @@ function getPosts(page, searchTerm, params) {
         if(typeof params === 'object'){
             $(".pagination").remove();
             $('#links-container .infinite-scroll').append(response);
+            $(".pagination").hide();
         } else {
             $('#links-container').html(response);    
             location.hash = page;

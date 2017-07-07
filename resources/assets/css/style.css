@@ -88,8 +88,8 @@ h1.link-title a small {
 	font-weight: bold;
 }
 div.pagination {
-	/*display: table !important;*/
-	display: none;
+	display: table !important;
+	/*display: none;*/
 	margin: 0 auto;
 }
 .linkLookLikeButton {
