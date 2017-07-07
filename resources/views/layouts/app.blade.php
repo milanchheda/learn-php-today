@@ -54,14 +54,14 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-0">
+                    <button type="button" class="navbar-toggle mobile-search" data-toggle="collapse" data-target="#navbar-collapse-0">
                         <i class="fa fa-search"></i>
                     </button>
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
                         <!-- {{ config('app.name', 'Laravel') }} -->
-                        <img class="logo" src="{{ asset('images/logo.jpg') }}">
+                        <img class="logo" src="{{ asset('images/logo_1.jpg') }}">
                     </a>
                 </div>
                 <div class="navbar-collapse hidden-desktop" id="navbar-collapse-0">

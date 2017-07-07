@@ -7,9 +7,14 @@ use Backpack\CRUD\CrudTrait; // <------------------------------- this one
 use Spatie\Permission\Traits\HasRoles;// <---------------------- and this one
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Backpack\Base\app\Notifications\ResetPasswordNotification as ResetPasswordNotification;
+use Overtrue\LaravelFollow\Traits\CanFollow;
+use Overtrue\LaravelFollow\Traits\CanLike;
+use Overtrue\LaravelFollow\Traits\CanFavorite;
+use Overtrue\LaravelFollow\Traits\CanSubscribe;
 
 class User extends Authenticatable
 {
+    use CanFollow, CanLike, CanFavorite, CanSubscribe;
     use CrudTrait; // <----- this
     use HasRoles; // <------ and this
     use Notifiable;

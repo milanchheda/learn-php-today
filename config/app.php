@@ -195,6 +195,7 @@ return [
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
         Thujohn\Twitter\TwitterServiceProvider::class,
         Roumen\Feed\FeedServiceProvider::class,
+        Overtrue\LaravelFollow\FollowServiceProvider::class,
 
     ],
 

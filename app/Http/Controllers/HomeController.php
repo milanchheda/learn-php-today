@@ -36,6 +36,9 @@ class HomeController extends Controller
      */
     public function index()
     {
+        // $user = Auth::user();
+        // $user->follow(171); 
+        // dd($user);
         if (Request::ajax()) {
             $params = Request::all();
             $allLinks = Link::with('tagged');
@@ -44,7 +47,12 @@ class HomeController extends Controller
                 $allLinks = $allLinks->where('links.title', 'like', '%' . $searchTerm . '%');
             }
             $allLinks = $allLinks->orderBy('links.id', 'desc')->simplePaginate(12);
-            return Response::json(View::make('viewlinks', compact('allLinks'))->render());
+            if($params['more']) {
+                return Response::json(View::make('viewmorelinks', compact('allLinks'))->render());
+            } else {
+                return Response::json(View::make('viewlinks', compact('allLinks'))->render());    
+            }
+            
         } else {
             // $allLinks = Link::with('tagged')->orderBy('published_on', 'desc')->simplePaginate(12);
             $allLinks = Cache::remember('homepage', 10, function () {
@@ -221,6 +229,10 @@ class HomeController extends Controller
     public function topViews() {
         $allLinks = Link::with('tagged')->select(DB::raw('links.*'))->join('link_views', 'links.id', 'link_views.link_id')->where('link_views.view_count', '>' , 0)->orderBy('link_views.view_count', 'desc')->simplePaginate(12);
         if (Request::ajax()) {
+            $params = Request::all();
+            if($params['more']) {
+                return Response::json(View::make('viewmorelinks', compact('allLinks'))->render());
+            }
             return Response::json(View::make('viewlinks', compact('allLinks'))->render());
         }
         return View::make('home', compact('allLinks'));     
@@ -244,7 +256,11 @@ class HomeController extends Controller
 
     public function showTaggedLinks($slug) {
         if (Request::ajax()) {
+            $params = Request::all();
             $allLinks = Link::withAllTags([$slug])->orderBy('links.id', 'desc')->simplePaginate(12);
+            if($params['more']) {
+                return Response::json(View::make('viewmorelinks', compact('allLinks'))->render());
+            }
             return Response::json(View::make('viewlinks', compact('allLinks'))->render());
         } else {
             $allLinks = Cache::remember("tag:". $slug, 60, function () use($slug) {
@@ -298,7 +314,7 @@ class HomeController extends Controller
        /* set your feed's title, description, link, pubdate and language */
        $feed->title = 'Learn PHP Today';
        $feed->description = 'LearnPHPToday is a website for developers to read news and feeds related to PHP, Laravel, Symfony and everything related to PHP. Learn something new everyday.';
-       $feed->logo = env('APP_URL') . '/images/logo.jpg';
+       $feed->logo = env('APP_URL') . '/images/logo_1.jpg';
        $feed->link = url('feed');
        $feed->setDateFormat('datetime');
        $feed->pubdate = $posts[0]->published_on;

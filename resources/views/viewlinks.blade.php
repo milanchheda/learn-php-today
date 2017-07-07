@@ -40,6 +40,7 @@
 </div> -->
 
 <div class="container-fluid container">
+    <div class="infinite-scroll">
     @foreach($allLinks as $user)
     <?php
         if($user->tags) {
@@ -49,7 +50,7 @@
                 if($count == 5)
                     break;
                 $tagUrl = url('/') . '/tag/' . $tag->slug;
-                $tagHtml .= "<a href='" . $tagUrl . "' class='tag'>" . strtoupper($tag->name) . "</a>";
+                $tagHtml .= "<a href='" . $tagUrl . "' class='tag' tagid=" . $tag->id . ">" . strtoupper($tag->name) . "</a>";
                 $count++;
             }
             // $appendCount = count($user->tags) > 5 ? count($user->tags) - 5 : 0;
@@ -120,4 +121,5 @@
         </div>
     @endforeach
     <div class="pagination"> {{ $allLinks->links() }} </div>
+    </div>
 </div>

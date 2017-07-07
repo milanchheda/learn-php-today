@@ -23,7 +23,7 @@ Route::post('/numbers/update', ['middleware' => 'auth', 'uses' => 'HomeControlle
 Route::post('/saveTagsForLinks', ['middleware' => 'auth', 'uses' => 'HomeController@saveTagsForLinks']);
 
 Route::get('/home', 'HomeController@index')->name('home');
-
+Route::post('/tag-data', 'TagController@getTagHoverData');
 Route::get('/upvotes', ['middleware' => 'auth', 'uses' => 'HomeController@myUpvotes']);
 Route::get('/my-bookmarks', ['middleware' => 'auth', 'uses' => 'HomeController@myRecommends']);
 Route::get('/top-views', 'HomeController@topViews');

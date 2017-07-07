@@ -49,7 +49,8 @@ ul.social-icons li i {
 		font-size: 14px;
 	}
 	ul.social-icons {
-		margin-right: 10%;
+		margin-right: 3%;
+	    margin-top: 0;
 	}
 }
 .well {
@@ -87,7 +88,8 @@ h1.link-title a small {
 	font-weight: bold;
 }
 div.pagination {
-	display: table !important;
+	/*display: table !important;*/
+	display: none;
 	margin: 0 auto;
 }
 .linkLookLikeButton {
@@ -285,7 +287,12 @@ div.tagsBlock a {
     display: block !important; /* This is how it looks on desktop */
   }
 }
-
+.mobile-search {
+	border: none;
+}
+.mobile-search:focus {
+	background-color: #FFF !important;
+}
 @media (min-width: 768px) {
   .hidden-desktop {
     display: none !important; /* This is how it looks on desktop */
