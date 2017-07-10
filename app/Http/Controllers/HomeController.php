@@ -16,6 +16,8 @@ use SEO;
 use App;
 use URL;
 use Analytics;
+use Helper;
+use App\ClickTrack;
 
 class HomeController extends Controller
 {
@@ -39,7 +41,8 @@ class HomeController extends Controller
     {
         // $user = Auth::user();
         // $user->follow(171); 
-        // dd($user);
+        // dd(Helper::ip_info("173.252.110.27"));
+        // dd(Request::ip());
         if (Request::ajax()) {
             $params = Request::all();
             $allLinks = Link::with('tagged');
@@ -98,7 +101,7 @@ class HomeController extends Controller
 
         $urlOfSlug['urlOfSlug'] = $urlOfSlug['link'];
         // return View::make('showpost', $urlOfSlug);
-        Analytics::trackEvent('post', 'click', 'link', $urlOfSlug['link'] . '?ref=learnphptoday');
+        // Analytics::trackEvent('post', 'click', 'link', $urlOfSlug['link'] . '?ref=learnphptoday');
         return redirect($urlOfSlug['link'] . '?ref=learnphptoday');
     }
 
@@ -337,4 +340,25 @@ class HomeController extends Controller
        return $feed->render('rss');
     }
     
+    public function track() {
+        $params = Request::all();
+        if(isset($params['link_id']) && is_numeric($params['link_id'])) {
+            $ipInfo = Helper::ip_info(Request::ip());
+
+            $newClickTrack = new ClickTrack();
+            $newClickTrack->link_id = $params['link_id'];
+            $newClickTrack->browser = (isset($params['browser']) && $params['browser'] != '') ? $params['browser'] : NULL;
+            $newClickTrack->timezome = (isset($params['timeZone']) && $params['timeZone'] != '') ? $params['timeZone'] : NULL;
+            $newClickTrack->is_mobile = (isset($params['isMobile']) && $params['isMobile'] != '') ? $params['isMobile'] : NULL;
+            $newClickTrack->device_type = (isset($params['deviceType']) && $params['deviceType'] != '') ? $params['deviceType'] : NULL;
+            $newClickTrack->os_version = (isset($params['osVersion']) && $params['osVersion'] != '') ? $params['osVersion'] : NULL;
+            $newClickTrack->os = (isset($params['OS']) && $params['OS'] != '') ? $params['OS'] : NULL;
+            $newClickTrack->browser_version = (isset($params['browserVersion']) && $params['browserVersion'] != '') ? $params['browserVersion'] : NULL;
+            $newClickTrack->city = (isset($ipInfo['city']) && $ipInfo['city'] != '') ? $ipInfo['city'] : NULL;
+            $newClickTrack->state = (isset($ipInfo['state']) && $ipInfo['state'] != '') ? $ipInfo['state'] : NULL;
+            $newClickTrack->country = (isset($ipInfo['country']) && $ipInfo['country'] != '') ? $ipInfo['country'] : NULL;
+
+            $newClickTrack->save();
+        }
+    }    
 }

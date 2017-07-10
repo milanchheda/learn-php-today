@@ -259,6 +259,7 @@ return [
         'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
         'Twitter' => Thujohn\Twitter\Facades\Twitter::class,
         'Analytics' => Ipunkt\LaravelAnalytics\AnalyticsFacade::class,
+        'Helper' => App\Helpers\Helper::class,
 
     ],
 

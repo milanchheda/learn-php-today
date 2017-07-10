@@ -1,7 +1,3 @@
-// window.$ = window.jQuery = require('jquery')
-// require('selectize');
-// var bootstrap = require('bootstrap-sass');
-
 var isMobile = false; //initiate as false
 // device detection
 if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|ipad|iris|kindle|Android|Silk|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(navigator.userAgent) 
@@ -90,8 +86,10 @@ function populateNumbers() {
     });
 }
 
-$(document.body).on('click', '.post-link', function(){
+$(document.body).on('click', '.post-link', function(e){
+    e.preventDefault();
     var urlToGo = $(this).attr('href');
+    track($(this).parents(".linksContainer:first").attr('link-id'), urlToGo);
     ga('send', 'event', 'outbound_link', urlToGo,
         {
             'hitCallback': function () {
@@ -403,3 +401,28 @@ $(document).ready(function(){
         });
     });
 });
+
+function track(link_id, urlToGo) {
+
+    var client = new ClientJS();
+    var browser = client.getBrowser(); // Get Browser
+    var browserVersion = client.getBrowserVersion(); // Get Browser Version
+    var OS = client.getOS(); // Get OS Version
+    var osVersion = client.getOSVersion(); // Get OS Version
+    var deviceType = client.getDeviceType(); // Get Device Type
+    var isMobile = client.isMobile(); // Check For Mobile
+    var timeZone = client.getTimeZone(); // Get Time Zone
+    
+    axios.post('/track', {
+            link_id: link_id,
+            browser: browser,
+            timeZone:timeZone,
+            isMobile:isMobile,
+            deviceType:deviceType,
+            osVersion:osVersion,
+            OS:OS,
+            browserVersion:browserVersion,
+    }).then(function (response) {
+        window.location = urlToGo;
+    });
+}
