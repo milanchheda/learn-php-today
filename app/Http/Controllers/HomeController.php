@@ -15,6 +15,7 @@ use Cache;
 use SEO;
 use App;
 use URL;
+use Analytics;
 
 class HomeController extends Controller
 {
@@ -45,6 +46,7 @@ class HomeController extends Controller
             if(isset($params['searchTerm']) && !empty($params['searchTerm'])) {
                 $searchTerm = $params['searchTerm'];
                 $allLinks = $allLinks->where('links.title', 'like', '%' . $searchTerm . '%');
+                Analytics::trackEvent('homepage', 'search', 'search', $searchTerm);
             }
             $allLinks = $allLinks->orderBy('links.id', 'desc')->simplePaginate(12);
             if($params['more']) {
@@ -96,7 +98,7 @@ class HomeController extends Controller
 
         $urlOfSlug['urlOfSlug'] = $urlOfSlug['link'];
         // return View::make('showpost', $urlOfSlug);
-
+        Analytics::trackEvent('post', 'click', 'link', $urlOfSlug['link'] . '?ref=learnphptoday');
         return redirect($urlOfSlug['link'] . '?ref=learnphptoday');
     }
 
@@ -227,6 +229,7 @@ class HomeController extends Controller
     }
 
     public function topViews() {
+        Analytics::trackPage();
         $allLinks = Link::with('tagged')->select(DB::raw('links.*'))->join('link_views', 'links.id', 'link_views.link_id')->where('link_views.view_count', '>' , 0)->orderBy('link_views.view_count', 'desc')->simplePaginate(12);
         if (Request::ajax()) {
             $params = Request::all();
@@ -239,6 +242,7 @@ class HomeController extends Controller
     }
 
     public function topUpvotes() {
+        Analytics::trackPage();
         $allLinks = Link::with('tagged')->select(DB::raw('links.*'))->join('link_views', 'links.id', 'link_views.link_id')->where('link_views.upvote_count', '>' , 0)->orderBy('link_views.upvote_count', 'desc')->simplePaginate(12);
         if (Request::ajax()) {
             return Response::json(View::make('viewlinks', compact('allLinks'))->render());
@@ -247,6 +251,7 @@ class HomeController extends Controller
     }
 
     public function topRecommends() {
+        Analytics::trackPage();
         $allLinks = Link::with('tagged')->select(DB::raw('links.*'))->join('link_views', 'links.id', 'link_views.link_id')->where('link_views.recommend_count', '>' , 0)->orderBy('link_views.recommend_count', 'desc')->simplePaginate(12);
         if (Request::ajax()) {
             return Response::json(View::make('viewlinks', compact('allLinks'))->render());
@@ -255,6 +260,7 @@ class HomeController extends Controller
     }
 
     public function showTaggedLinks($slug) {
+        Analytics::trackPage();
         if (Request::ajax()) {
             $params = Request::all();
             $allLinks = Link::withAllTags([$slug])->orderBy('links.id', 'desc')->simplePaginate(12);
@@ -273,6 +279,7 @@ class HomeController extends Controller
     }
 
     public function showAllTags() {
+        Analytics::trackPage();
         $model = new Link();
         $allTags['allTags'] = $model->getAllTagsAndCounts();
         return View::make('tags', $allTags);

@@ -196,6 +196,8 @@ return [
         Thujohn\Twitter\TwitterServiceProvider::class,
         Roumen\Feed\FeedServiceProvider::class,
         Overtrue\LaravelFollow\FollowServiceProvider::class,
+        Ipunkt\LaravelAnalytics\AnalyticsServiceProvider::class,
+
 
     ],
 
@@ -256,6 +258,8 @@ return [
         // or
         'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
         'Twitter' => Thujohn\Twitter\Facades\Twitter::class,
+        'Analytics' => Ipunkt\LaravelAnalytics\AnalyticsFacade::class,
+
     ],
 
 ];
