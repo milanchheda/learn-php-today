@@ -24,7 +24,8 @@ class ClickTrack extends Model
             'timezome', 
             'city', 
             'state', 
-            'country'
+            'country',
+            'referrer'
         ];
         protected $dates = ['created_at', 'updated_at'];
 }

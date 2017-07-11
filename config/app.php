@@ -197,8 +197,9 @@ return [
         Roumen\Feed\FeedServiceProvider::class,
         Overtrue\LaravelFollow\FollowServiceProvider::class,
         Ipunkt\LaravelAnalytics\AnalyticsServiceProvider::class,
+        Jenssegers\Agent\AgentServiceProvider::class,
 
-
+        
     ],
 
     /*
@@ -260,6 +261,7 @@ return [
         'Twitter' => Thujohn\Twitter\Facades\Twitter::class,
         'Analytics' => Ipunkt\LaravelAnalytics\AnalyticsFacade::class,
         'Helper' => App\Helpers\Helper::class,
+        'Agent' => Jenssegers\Agent\Facades\Agent::class,
 
     ],
 
