@@ -93,7 +93,9 @@ class HomeController extends Controller
     {
         $model = new Link();
         $urlOfSlug = $model->getSlugId($slug);
+        
         $this->track($urlOfSlug['id']);
+
         SEO::setTitle($urlOfSlug['title']);
         SEO::opengraph()->setUrl(Request::url());
         SEO::opengraph()->setSiteName('Learn PHP Today');
@@ -351,7 +353,7 @@ class HomeController extends Controller
             $deviceTypeToUse = (isset($params['deviceType']) && $params['deviceType'] != '') ? $params['deviceType'] : NULL;
             $osToUse = (isset($params['OS']) && $params['OS'] != '') ? $params['OS'] : NULL;
             $osVersionToUse = (isset($params['osVersion']) && $params['osVersion'] != '') ? $params['osVersion'] : NULL;
-            $browserToUse = (isset($params['browserVersion']) && $params['browserVersion'] != '') ? $params['browserVersion'] : NULL;
+            $browserVersionToUse = (isset($params['browserVersion']) && $params['browserVersion'] != '') ? $params['browserVersion'] : NULL;
             $timezoneToUse = (isset($params['timeZone']) && $params['timeZone'] != '') ? $params['timeZone'] : NULL;
         } else if(isset($linkId) && is_numeric($linkId)) {
             $linkIdToUse = $linkId;

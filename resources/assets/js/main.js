@@ -86,18 +86,18 @@ function populateNumbers() {
     });
 }
 
-$(document.body).on('click', '.post-link', function(e){
-    e.preventDefault();
-    var urlToGo = $(this).attr('href');
-    track($(this).parents(".linksContainer:first").attr('link-id'), urlToGo);
-    ga('send', 'event', 'outbound_link', urlToGo,
-        {
-            'hitCallback': function () {
-                document.location = urlToGo;
-            }
-        }
-    );
-});
+// $(document.body).on('click', '.post-link', function(e){
+//     e.preventDefault();
+//     var urlToGo = $(this).attr('href');
+//     // track($(this).parents(".linksContainer:first").attr('link-id'), urlToGo);
+//     ga('send', 'event', 'outbound_link', urlToGo,
+//         {
+//             'hitCallback': function () {
+//                 document.location = urlToGo;
+//             }
+//         }
+//     );
+// });
 
 $(document.body).on('click', '.upvote, .recommend', function(){
     var fieldToUpdate = $(this).find('span');
