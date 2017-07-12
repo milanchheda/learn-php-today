@@ -17,7 +17,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <link href="{{ mix('css/custom.min.css') }}" rel="stylesheet">
+    <link href="{{ mix('css/custom.min.css') }}?v=1" rel="stylesheet">
     
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -58,7 +58,7 @@
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
                         <!-- {{ config('app.name', 'Laravel') }} -->
-                        <img class="logo" src="{{ asset('images/logo_1.jpg') }}">
+                        <img class="logo" src="{{ asset('images/logo_1.png') }}">
                     </a>
                 </div>
                 <div class="navbar-collapse hidden-desktop" id="navbar-collapse-0">
@@ -130,7 +130,57 @@
             <i id="searchclear" class="fa fa-times-circle" aria-hidden="true"></i>
 
         </div>
-        <div class="container container-fluid" id="breadCrumbContainer">
+        
+        <div class="row header-banner-container">
+            <div class="container cta-container">
+                <div class="col-sm-7 text-center">
+                    <h3 class="title">Discover all the top Articles & Tutorials related to PHP</h3>
+                    
+                    <!-- Begin MailChimp Signup Form -->
+                    
+                    <link href="//cdn-images.mailchimp.com/embedcode/slim-10_7.css" rel="stylesheet" type="text/css">
+                    
+                    <div id="mc_embed_signup">
+                        <form action="//learnphptoday.us16.list-manage.com/subscribe/post?u=48ed5ee6722b8f1018036ed76&amp;id=426dfb94e2" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                            <div id="mc_embed_signup_scroll">
+                                <!-- <label for="mce-EMAIL">Subscribe to our mailing list</label> -->
+                                <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+                                <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                                <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                                    <input type="text" name="b_48ed5ee6722b8f1018036ed76_426dfb94e2" tabindex="-1" value="">
+                                </div>
+                                <div class="clear">
+                                    <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!--End mc_embed_signup-->
+                    <!-- <div style="min-height:70px;">
+                        <p style="margin-top:1em;"></p>
+                    </div> -->
+                    <div class="social-btn-group hidden-xs pull-left">
+                        <!-- <iframe src="http://c.yvoschaap.com/producthunt/counter.html#href=http%3A%2F%2Fwww.producthunt.com%2Fr%2F9751924ee29033%2F50435&amp;layout=wide" width="120" height="25" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
+                        <iframe src="http://hn-button.herokuapp.com?title=GitLogs%20News%20-%20Discover%20The%20Top%20Trending%20Repos&amp;url=http%3A%2F%2Fwww.gitlogs.com&amp;&amp;count=horizontal" name="hn-button-p09jvrg" id="hn-button-p09jvrg" class="hn-button" data-title="GitLogs News - Discover The Top Trending Repos" data-url="http://www.gitlogs.com" data-count="horizontal" title="Hacker News Button" height="20" width="82" frameborder="0" allowtransparency="true" scrolling="no"></iframe> -->
+                        <a href="http://feeds.feedburner.com/learnphptoday-feeds" title="Subscribe to my feed" rel="alternate" type="application/rss+xml"><img src="//feedburner.google.com/fb/images/pub/feed-icon32x32.png" alt="" style="border:0;margin-top: -3px;position: absolute;margin-left: 90px;" />
+                        </a>
+                        <a href="http://feeds.feedburner.com/learnphptoday-feeds" title="Subscribe to my feed" rel="alternate" type="application/rss+xml"></a>
+                        <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" class="twitter-follow-button twitter-follow-button-rendered" title="Twitter Follow Button" src="http://platform.twitter.com/widgets/follow_button.6f0f2e104cd4fbbafb16bbad6813f68d.en.html#dnt=false&amp;id=twitter-widget-0&amp;lang=en&amp;screen_name=learn_php_today&amp;show_count=false&amp;show_screen_name=false&amp;size=l" style="position:static;visibility:visible;width:100px;height:28px;" data-screen-name="learn_php_today"></iframe>
+                    </div>
+                </div>
+                <div class="col-sm-4 mockup-container">
+                    <div class="device-mockup animated fadeIn">
+                        <div class="device">
+                            <div class="screen"><img src="/images/homepage_banner.png" alt="Learn PHP Today newsletter">
+                            </div>
+                            <div class="button"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="container container-fluid" id="breadCrumbContainer">
             <ul class="page-breadcrumb navbar-nav">
                 <li>
                     <i class="fa fa-home"></i>
@@ -161,7 +211,7 @@
                     <a href="{{url('http://twitter.com/learnphptoday')}}"><i class="fa fa-twitter"></i></a>
                 </li>
             </ul>
-        </div>
+        </div> -->
         @yield('content')
     </div>
 
@@ -308,6 +358,6 @@
     </div>
     <button id="feedback-button" data-toggle="modal" data-target="#feedbackModal" style="visibility: hidden;">Feedback</button>
     <script src='https://www.google.com/recaptcha/api.js'></script>
-    <script src="{{ mix('js/custom.min.js') }}"></script>
+    <script src="{{ mix('js/custom.min.js') }}?v=1"></script>
 </body>
 </html>
