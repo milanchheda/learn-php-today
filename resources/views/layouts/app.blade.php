@@ -140,7 +140,7 @@
                     
                     <link href="//cdn-images.mailchimp.com/embedcode/slim-10_7.css" rel="stylesheet" type="text/css">
                     
-                    <!-- <div id="mc_embed_signup">
+                    <div id="mc_embed_signup">
                         <form action="//learnphptoday.us16.list-manage.com/subscribe/post?u=48ed5ee6722b8f1018036ed76&amp;id=426dfb94e2" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
                             <div id="mc_embed_signup_scroll">
                                 <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
@@ -152,7 +152,7 @@
                                 </div>
                             </div>
                         </form>
-                    </div> -->
+                    </div>
 
                     <!--End mc_embed_signup-->
                     <!-- <div style="min-height:70px;">
