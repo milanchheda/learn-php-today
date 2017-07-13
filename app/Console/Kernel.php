@@ -14,7 +14,8 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         Commands\readFeeds::class,
-        Commands\postTweets::class
+        Commands\postTweets::class,
+        Commands\deleteLinks::class
     ];
 
     /**
