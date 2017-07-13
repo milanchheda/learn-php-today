@@ -68,7 +68,7 @@ class readFeeds extends Command
                         $newLink->published_on = $postDate;
                         $newLink->link = $item->get_permalink();
                         $newLink->slug = $slug;
-                        $newLink->content = substr($item->get_description(), 0, 700);
+                        $newLink->content = substr($item->get_description(), 0, 1500);
                         $newLink->submitted_by = 1;
                         $newLink->save();
 
