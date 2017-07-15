@@ -374,3 +374,6 @@ div.tagsBlock a {
 	right: 6.38%;
 	position: absolute;
 }
+.cta-container .device .screen img {
+	max-width: 630px;
+}
