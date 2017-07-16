@@ -322,7 +322,7 @@ class HomeController extends Controller
        $feed = App::make("feed");
 
        /* creating rss feed with our most recent 20 posts */
-       $posts = \DB::table('links')->orderBy('created_at', 'desc')->take(20)->get();
+       $posts = \DB::table('links')->select(DB::raw('links.*'))->join('link_views', 'links.id', 'link_views.link_id')->where('link_views.view_count', '>' , 10)->orderBy('links.created_at', 'desc')->take(20)->get();
 
        /* set your feed's title, description, link, pubdate and language */
        $feed->title = 'Learn PHP Today';
@@ -333,7 +333,7 @@ class HomeController extends Controller
        $feed->pubdate = $posts[0]->published_on;
        $feed->lang = 'en';
        $feed->setShortening(true);
-       $feed->setTextLimit(100);
+       $feed->setTextLimit(300);
 
        foreach ($posts as $post)
        {
