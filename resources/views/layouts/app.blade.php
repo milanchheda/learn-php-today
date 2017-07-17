@@ -125,21 +125,18 @@
                 </div>
             </div>
         </nav>
-        <div class="container container-fluid" id="searchContainer">
-            <input type="text" id="search" name="query" placeholder="Search posts">
-            <i id="searchclear" class="fa fa-times-circle" aria-hidden="true"></i>
-
-        </div>
-        
+        <!-- <div class="row"> -->
+            <div class="container container-fluid" id="searchContainer">
+                <input type="text" id="search" name="query" placeholder="Search posts">
+                <i id="searchclear" class="fa fa-times-circle" aria-hidden="true"></i>
+            </div>
+        <!-- </div> -->
         <div class="row header-banner-container">
             <div class="container cta-container">
-                <div class="col-sm-7 text-center">
+                <div class="col-sm-8 text-center">
                     <h3 class="title">Discover all the top Articles & Tutorials related to PHP</h3>
                     
                     <!-- Begin MailChimp Signup Form -->
-                    
-                    <link href="//cdn-images.mailchimp.com/embedcode/slim-10_7.css" rel="stylesheet" type="text/css">
-                    
                     <div id="mc_embed_signup">
                         <form action="//learnphptoday.us16.list-manage.com/subscribe/post?u=48ed5ee6722b8f1018036ed76&amp;id=426dfb94e2" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
                             <div id="mc_embed_signup_scroll">

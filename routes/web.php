@@ -47,3 +47,5 @@ Route::get('/verifyemail/{token}', 'Auth\RegisterController@verify');
 
 Route::get('feed', 'HomeController@createRssFeed');
 Route::post('/track','HomeController@track');
+
+Route::get('/manage', ['middleware' => 'isUserAdmin', 'uses' => 'ManageController@index']);

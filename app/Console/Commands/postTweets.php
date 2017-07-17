@@ -45,7 +45,7 @@ class postTweets extends Command
     {
         $firstDayOfPrevMonth = new Carbon('first day of last month');
         $allLinks = Link::with('tagged')->where('published_on', '>', $firstDayOfPrevMonth)->inRandomOrder()->first();
-        $shareURL = url('/') . '/post/' . $allLinks['slug'] . '?ref=learnphptoday';
+        $shareURL = $allLinks['link'] . '?ref=learnphptoday';
         $allStrings = explode(' ', $allLinks['title']);
         $keywordsArray = [
             'php',

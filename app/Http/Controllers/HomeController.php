@@ -53,7 +53,7 @@ class HomeController extends Controller
                 Analytics::trackEvent('homepage', 'search', 'search', $searchTerm);
             }
             $allLinks = $allLinks->orderBy('links.id', 'desc')->simplePaginate(12);
-            if(Request::has('more')) {
+            if(Request::has('more') && Request::get('more') > 0) {
                 return Response::json(View::make('viewmorelinks', compact('allLinks'))->render());
             } else {
                 return Response::json(View::make('viewlinks', compact('allLinks'))->render());    

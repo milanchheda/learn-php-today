@@ -6,7 +6,7 @@
 	    @foreach($allLinksWithoutTags as $user)
 	    	<div class="col-xs-12 col-md-12 col-lg-12 col-sm-12 ">
 	    		{{ Form::checkbox('links', $user->id, null, ['class' => 'linksCheckbox']) }}
-	    		<a href="/post/{{ $user->slug }}">{{ $user->title }}</a>
+	    		<a href="/post/{{ $user->slug }}">{{ $user->title }} ({{ $user->link }})</a>
 	    	</div>
 	    @endforeach
 	    <div class="container">
