@@ -26,7 +26,7 @@
                         $parse = parse_url($user->link);
                         $source = str_replace('www.', '', $parse['host']);
                         echo "(" . $source . ")";
-                        $shareURL = url('/') . '/post/' . $user->slug;
+                        $shareURL = $user->link . '?ref=learnphptoday';
                     ?>
                     </small>
                 </a>
