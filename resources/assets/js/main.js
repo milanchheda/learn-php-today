@@ -426,5 +426,6 @@ function track(link_id, urlToGo) {
             browserVersion:browserVersion,
     }).then(function (response) {
         // window.location = urlToGo;
+        populateNumbers();
     });
 }

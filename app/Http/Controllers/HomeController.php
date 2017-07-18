@@ -383,6 +383,7 @@ class HomeController extends Controller
             $newClickTrack->country = (isset($ipInfo['country']) && $ipInfo['country'] != '') ? $ipInfo['country'] : NULL;
             $newClickTrack->referrer = (isset($_SERVER['HTTP_REFERER']) && $_SERVER['HTTP_REFERER'] != '') ? $_SERVER['HTTP_REFERER'] : NULL;
             $newClickTrack->save();
+            DB::table('link_views')->where('link_id', '=', $linkIdToUse)->increment('view_count');
         }
     }    
 }
