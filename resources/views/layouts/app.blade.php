@@ -51,9 +51,9 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <button type="button" class="navbar-toggle mobile-search" data-toggle="collapse" data-target="#navbar-collapse-0">
+                    <!-- <button type="button" class="navbar-toggle mobile-search" data-toggle="collapse" data-target="#navbar-collapse-0">
                         <i class="fa fa-search"></i>
-                    </button>
+                    </button> -->
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
@@ -61,13 +61,13 @@
                         <img class="logo" src="{{ asset('images/logo_1.png') }}">
                     </a>
                 </div>
-                <div class="navbar-collapse hidden-desktop" id="navbar-collapse-0">
+                <!-- <div class="navbar-collapse hidden-desktop" id="navbar-collapse-0">
                     <form class="navbar-form navbar-right" role="search">
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Search" id="searchMobile">
                         </div>           
                     </form>
-                </div>
+                </div> -->
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
@@ -84,11 +84,11 @@
                                 <i class="fa fa-plus"></i>
                             </a>
                         </li> -->
-                        <li>
+                        <!-- <li>
                             <a href="#" id="searchIcon" class="hidden-mobile">
                                 <i class="fa fa-search"></i>
                             </a>
-                        </li>
+                        </li> -->
                         <!-- Authentication Links -->
                         @if (Auth::guest())
                             <!-- <li><a href="{{ route('login') }}">Login</a></li> -->
@@ -126,21 +126,20 @@
             </div>
         </nav>
         <!-- <div class="row"> -->
-            <div class="container container-fluid" id="searchContainer">
+            <!-- <div class="container container-fluid" id="searchContainer">
                 <input type="text" id="search" name="query" placeholder="Search posts">
                 <i id="searchclear" class="fa fa-times-circle" aria-hidden="true"></i>
-            </div>
+            </div> -->
         <!-- </div> -->
         <div class="row header-banner-container">
             <div class="container cta-container">
                 <div class="col-sm-8 text-center">
                     <h3 class="title">Discover all the top Articles & Tutorials related to PHP</h3>
-                    
                     <!-- Begin MailChimp Signup Form -->
                     <div id="mc_embed_signup">
                         <form action="//learnphptoday.us16.list-manage.com/subscribe/post?u=48ed5ee6722b8f1018036ed76&amp;id=426dfb94e2" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
                             <div id="mc_embed_signup_scroll">
-                                <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+                                <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Email address" required>
                                 <div style="position: absolute; left: -5000px;" aria-hidden="true">
                                     <input type="text" name="b_48ed5ee6722b8f1018036ed76_426dfb94e2" tabindex="-1" value="">
                                 </div>
@@ -150,11 +149,12 @@
                             </div>
                         </form>
                     </div>
-
                     <!--End mc_embed_signup-->
-                    <!-- <div style="min-height:70px;">
-                        <p style="margin-top:1em;"></p>
-                    </div> -->
+                    <div class="secondary-header-info mockup-container">
+                        <p>
+                        Join the weekly newsletter and never miss out on important updates and news. You can expect quick tips, links to interesting tutorials, updates and packages. We will never ever ever ever send you ads as spam.
+                        </p>
+                    </div>
                     <div class="social-btn-group hidden-xs pull-left">
                         <!-- <iframe src="http://c.yvoschaap.com/producthunt/counter.html#href=http%3A%2F%2Fwww.producthunt.com%2Fr%2F9751924ee29033%2F50435&amp;layout=wide" width="120" height="25" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
                         <iframe src="http://hn-button.herokuapp.com?title=GitLogs%20News%20-%20Discover%20The%20Top%20Trending%20Repos&amp;url=http%3A%2F%2Fwww.gitlogs.com&amp;&amp;count=horizontal" name="hn-button-p09jvrg" id="hn-button-p09jvrg" class="hn-button" data-title="GitLogs News - Discover The Top Trending Repos" data-url="http://www.gitlogs.com" data-count="horizontal" title="Hacker News Button" height="20" width="82" frameborder="0" allowtransparency="true" scrolling="no"></iframe> -->

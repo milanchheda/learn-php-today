@@ -40,10 +40,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // $user = Auth::user();
-        // $user->follow(171); 
-        // dd(Helper::ip_info("173.252.110.27"));
-        // dd(Request::ip());
         if (Request::ajax()) {
             $params = Request::all();
             $allLinks = Link::with('tagged');

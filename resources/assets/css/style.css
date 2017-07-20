@@ -1,5 +1,5 @@
 body {
-	background-color: #fff1eb !important;
+	background-color: #daeafb !important;
 	font-family: 'Miriam Libre', sans-serif !important;
 }
 .clearfix:before, .clearfix:after {
@@ -15,7 +15,8 @@ a {
 	text-decoration: none !important;
 }
 .navbar-default {
-	background-color: #fff1eb !important;
+	background-color: #FFF !important;
+	margin-bottom: 0px !important;
 	/*min-height: 70px !important;*/
 }
 #app-navbar-collapse ul li a {
@@ -65,7 +66,8 @@ ul.social-icons li i {
 	/*background-color: #fff;*/
 	border: 0 solid hsla(0,0%,100%,.25);
 	border-radius: 2px;
-	box-shadow: 0 1px 5px #dcdcdc !important;
+	/*box-shadow: 0 1px 5px #dcdcdc !important;*/
+	box-shadow: 5px 5px 10px #dcdcdc !important;
 	color: #2a2a2a;
 	position: relative;
 	transition: opacity .2s ease-in-out !important;
@@ -90,12 +92,14 @@ ul.social-icons li i {
     padding: 4px 7px;
     border-radius: 2px;
     border: #DEDEDE 1px solid;
+    color: #BBB;
 }
 .actionItems a:hover {
 	background-color: #EEEEED;
 }
 h1.link-title a {
-	color: #f30202 !important;
+	color: #f4645f !important;
+	/*color: #f30202 !important;*/
 	/*font-weight: bold;*/
 }
 h1.link-title a small {
@@ -349,18 +353,34 @@ div.tagsBlock a {
     animation-fill-mode: both;
 }
 #links-container {
-	background-color: #fff1eb;
+	background-color: #ebf3f9;
 	padding-top: 30px;
 	position: relative;
 	min-height: 400px;
 }
 .header-banner-container {
-	background-image: linear-gradient(-20deg, #f794a4 0%, #fdd6bd 100%);
+	/*background-image: linear-gradient(-20deg, #f794a4 0%, #fdd6bd 100%);*/
+	background-color: #daeafb;
+}
+.secondary-header-info p {
+	margin: 0.5em 0 0.5em 1.2em;
+	font-size: 1.4em;
+	text-align: left;
+	float: left;
 }
 @media (max-width: 768px) {
 	.mockup-container {
 	    display: none;
-	}	
+	}
+	#mc_embed_signup form {
+		padding: 10px 0 10px 3% !important;
+	}
+	#mc_embed_signup input.email {
+		width: 100% !important;
+	}
+	.cta-container h3 {
+		font-size: 2.3em !important;
+	}
 }
 #mc_embed_signup input.email {
 	float: left;
@@ -372,14 +392,14 @@ div.tagsBlock a {
 }
 .social-btn-group {
 	clear: both;
-    margin: 10% 0 2% 3%;
+    margin: 0 0 2% 3%;
 }
 .cta-container h3 {
 	color: #222;
 	font-size: 1.9em;
 }
 .cta-container .device .screen {
-	top: -9.62%;
+	top: 25%;
 	bottom: 12.77%;
 	left: -30.72%;
 	right: 6.38%;
