@@ -17,7 +17,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <link href="{{ mix('css/custom.min.css') }}?v=1.1" rel="stylesheet">
+    <link href="{{ mix('css/custom.min.css') }}?v=1.2" rel="stylesheet">
     
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -353,6 +353,6 @@
     </div>
     <button id="feedback-button" data-toggle="modal" data-target="#feedbackModal" style="visibility: hidden;">Feedback</button>
     <script src='https://www.google.com/recaptcha/api.js'></script>
-    <script src="{{ mix('js/custom.min.js') }}?v=1.1"></script>
+    <script src="{{ mix('js/custom.min.js') }}?v=1.2"></script>
 </body>
 </html>
