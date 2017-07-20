@@ -8,6 +8,7 @@ use Feeds;
 use App\Link;
 use App\LinkView;
 use Twitter;
+use Carbon\Carbon;
 
 class readFeeds extends Command
 {
@@ -43,17 +44,16 @@ class readFeeds extends Command
     public function handle()
     {
         $allSources = DB::table('sources')->where('status', '=', 1)->get()->random(10)->pluck('xml_url')->toArray();
-        $linksArray = [];
         $feed = Feeds::make($allSources, 5);
         $data = array(
             'items'     => $feed->get_items()
         );
+        $now = time();
         foreach ($data['items'] as $key => $item) {
-            $linksArray['title'][] = $item->get_title();
-            $linksArray['link'][] = $item->get_permalink();
-            $linksArray['date'][] = date('Y-m-d H:i:s', strtotime(str_replace(' | ', '', $item->get_date('j F Y | g:i a'))));
-
-            if($item->get_date('j F Y | g:i a') != '') {
+            $your_date = strtotime($item->get_date('Y-n-j'));
+            $datediff = $now - $your_date;
+            $numberOfDays = floor($datediff / (60 * 60 * 24));
+            if($item->get_date('j F Y | g:i a') != '' && $numberOfDays < 60) {
                 $tagsArray = [];
                 $slug = str_slug($item->get_title(), '-');
                 $categories = $item->get_categories();
@@ -68,7 +68,8 @@ class readFeeds extends Command
                         $newLink->published_on = $postDate;
                         $newLink->link = $item->get_permalink();
                         $newLink->slug = $slug;
-                        $newLink->content = substr($item->get_description(), 0, 1500);
+                        // $newLink->content = substr($item->get_description(), 0, 1500);
+                        $newLink->content = '';
                         $newLink->submitted_by = 1;
                         $newLink->save();
 
