@@ -333,7 +333,7 @@ class HomeController extends Controller
 
        foreach ($posts as $post)
        {
-           $feed->add($post->title, '', URL::to('post/'.$post->slug), $post->published_on, $post->content, $post->content);
+           $feed->add($post->title, '', $post->link, $post->published_on, '', '');
        }
 
        return $feed->render('rss');
