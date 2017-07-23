@@ -1,3 +1,11 @@
+bioEp.init({
+    html: '<div id="mc_embed_signup"><h2>Subscribe our Newsletter</h2><p>Join the daily newsletter and never miss out on important updates and news. You can expect quick tips, links to interesting tutorials, updates and packages. We will never ever ever ever send you ads as spam. </p><form action="//learnphptoday.us16.list-manage.com/subscribe/post?u=48ed5ee6722b8f1018036ed76&amp;id=426dfb94e2" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate><div id="mc_embed_signup_scroll"><input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Email address" required><div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_48ed5ee6722b8f1018036ed76_426dfb94e2" tabindex="-1" value=""></div><div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div></div></form></div>',
+    css: '#mc_embed_signup {font-size: 12px;}#mc_embed_signup h2 {padding: 10px 0 0 14px; font-size: 2.0em; color: #f4645f;}#mc_embed_signup_scroll{float: left; width: 100%;} #mc_embed_signup_scroll .clear{position: absolute; right: 20px;} #mc_embed_signup input.email{width: 96%;} #mc_embed_signup p {font-size: 14px; padding:1px 9px 0 14px;}',
+    delay: 2,
+    cookieExp: 7,
+    height: 225,
+    width: 500
+});
 var isMobile = false; //initiate as false
 // device detection
 if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|ipad|iris|kindle|Android|Silk|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(navigator.userAgent) 

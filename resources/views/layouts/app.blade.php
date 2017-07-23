@@ -152,7 +152,7 @@
                     <!--End mc_embed_signup-->
                     <div class="secondary-header-info mockup-container">
                         <p>
-                        Join the weekly newsletter and never miss out on important updates and news. You can expect quick tips, links to interesting tutorials, updates and packages. We will never ever ever ever send you ads as spam.
+                        Join the daily newsletter and never miss out on important updates and news. You can expect quick tips, links to interesting tutorials, updates and packages. We will never ever ever ever send you ads as spam.
                         </p>
                     </div>
                     <div class="social-btn-group hidden-xs pull-left">

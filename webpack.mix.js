@@ -29,6 +29,7 @@ mix.combine([
 	'public/js/manifest.js',
 	'public/js/vendor.js',
     'resources/assets/js/nprogress.min.js',
+    'resources/assets/js/bioep.min.js',
     'public/js/app.js',
     'resources/assets/js/main.js',
 ], 'public/js/custom.js')
