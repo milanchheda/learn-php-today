@@ -318,7 +318,7 @@ class HomeController extends Controller
        $feed = App::make("feed");
 
        /* creating rss feed with our most recent 10 posts */
-       $posts = \DB::table('links')->select(DB::raw('links.*'))->orderBy('links.id', 'desc')->take(10)->get();
+       $posts = \DB::table('links')->select(DB::raw('links.*'))->orderBy('links.id', 'desc')->take(20)->get();
 
        /* set your feed's title, description, link, pubdate and language */
        $feed->title = 'Learn PHP Today';
