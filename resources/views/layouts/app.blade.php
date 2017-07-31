@@ -131,6 +131,7 @@
                 <i id="searchclear" class="fa fa-times-circle" aria-hidden="true"></i>
             </div> -->
         <!-- </div> -->
+        @if (Auth::guest())
         <div class="row header-banner-container">
             <div class="container cta-container">
                 <div class="col-sm-8 text-center">
@@ -175,6 +176,7 @@
                 </div>
             </div>
         </div>
+        @endif
         <!-- <div class="container container-fluid" id="breadCrumbContainer">
             <ul class="page-breadcrumb navbar-nav">
                 <li>

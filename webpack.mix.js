@@ -18,9 +18,13 @@ mix.sass('resources/assets/sass/app.scss', 'public/css')
   processCssUrls: false
 });
 
+mix.copy('node_modules/bootstrap-sass/assets/fonts/bootstrap/', 'public/fonts/bootstrap');
+
+
 mix.combine([
 	'public/css/app.css',
     'resources/assets/css/nprogress.min.css',
+    // 'resources/assets/css/datatables.bootstrap.min.css',
     'resources/assets/css/style.css'
 ], 'public/css/custom.css')
     .minify('public/css/custom.css');
@@ -29,8 +33,10 @@ mix.combine([
 	'public/js/manifest.js',
 	'public/js/vendor.js',
     'resources/assets/js/nprogress.min.js',
+
     'resources/assets/js/bioep.min.js',
     'public/js/app.js',
+    // 'resources/assets/js/datatables.bootstrap.min.js',
     'resources/assets/js/main.js',
 ], 'public/js/custom.js')
     .minify('public/js/custom.js');

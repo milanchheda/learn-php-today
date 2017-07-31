@@ -48,4 +48,10 @@ Route::get('/verifyemail/{token}', 'Auth\RegisterController@verify');
 Route::get('feed', 'HomeController@createRssFeed');
 Route::post('/track','HomeController@track');
 
-Route::get('/manage', ['middleware' => 'isUserAdmin', 'uses' => 'ManageController@index']);
+// Route::get('/manage', ['middleware' => 'isUserAdmin', 'uses' => 'ManageController@index']);
+
+Route::group(['prefix' => 'manage',  'middleware' => 'isUserAdmin'], function() {
+	// Route::get('/', 'ManageController@index');
+    // Route::get('links', 'ManageController@showLinks');
+    Route::post ( '/delete-link', 'ManageController@deleteLink');
+});
